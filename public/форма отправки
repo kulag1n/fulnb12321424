@@ -1,0 +1,46 @@
+<button class="order-btn" onclick="showForm(this)">Заказать</button>
+           <div class="popup-form" style="display: none;">
+  <h3>Оформить заказ</h3>
+  <input type="text" placeholder="Ваше имя" class="form-name" required>
+  <input type="tel" placeholder="Контактный телефон" class="form-phone" required>
+  <input type="number" placeholder="Количество товара" min="1" class="form-qty" required>
+  <button class="send-btn">Отправить</button>
+</div>
+          </div>
+        </div>
+<script>
+function showForm(button) {
+  const form = button.nextElementSibling;
+  form.style.display = form.style.display === "none" ? "block" : "none";
+}
+
+document.querySelectorAll(".send-btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+    const form = this.parentElement;
+    const name = form.querySelector(".form-name").value;
+    const phone = form.querySelector(".form-phone").value;
+    const qty = form.querySelector(".form-qty").value;
+
+    // Берём название из data-title карточки
+    const productCard = this.closest(".product-card");
+    const productTitle = productCard.getAttribute("data-title");
+
+    const message = `🪑 Заказ: ${productTitle}\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📦 Кол-во: ${qty}`;
+
+    const token = "8304031756:AAGaZ5JnDGq9o7bpaKpDCaTYR1G7_xun1kE";
+    const chat_id = "1303382989";
+
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id, text: message })
+    })
+    .then(() => {
+      alert("✅ Заявка отправлена!");
+      form.style.display = "none";
+      form.querySelectorAll("input").forEach(i => i.value = "");
+    })
+    .catch(() => alert("❌ Ошибка отправки."));
+  });
+});
+</script>

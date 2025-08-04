@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Сотрудничество с СмолМАФ | Металлоконструкции по заказу</title>
+
+    <meta
+      name="description"
+      content="Предлагаем взаимовыгодное сотрудничество архитекторам, застройщикам, муниципалитетам и компаниям..."
+    />
+    <meta
+      name="keywords"
+      content="сотрудничество, партнёрство, металлоконструкции, благоустройство..."
+    />
+    <meta
+      property="og:title"
+      content="Сотрудничество с СмолМАФ | Партнёрские решения"
+    />
+    <meta
+      property="og:description"
+      content="Совместное развитие городских пространств..."
+    />
+    <meta property="og:image" content="images/partnership.jpg" />
+    <meta
+      property="og:url"
+      content="https://smolmaf.ru/cooperation/index.html"
+    />
+    <link rel="canonical" href="https://smolmaf.ru/cooperation/index.html" />
+
+    <link rel="stylesheet" href="cooperation-style.css" />
+  </head>
+
+  <body>
+    <!-- Навигационная панель -->
+    <div class="nav-wrapper">
+      <div class="nav-glow"></div>
+      <!-- эффект свечения, если нужен -->
+      <nav class="top-navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">🏠 Главная</a></li>
+          <li><a href="services.html">🛠 Услуги</a></li>
+          <li><a href="cooperation.html">🤝 Сотрудничество</a></li>
+          <li class="dropdown">
+            <a href="#">🛒 Товары ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="mafs.html">🪑 Скамейки</a></li>
+              <li><a href="bins.html">🗑 Контейнеры / Урны</a></li>
+              <li><a href="fences.html">🚧 Ограждения</a></li>
+              <li><a href="metal.html">🏗 Металлоконструкции</a></li>
+              <li><a href="loft.html">🏙 Лофт стиль</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html">📌 О нас</a></li>
+          <li><a href="faq.html">❓ Частые вопросы </a></li>
+          <li><a href="contact.html">📞 Контакты</a></li>
+        </ul>
+
+        <div class="nav-contacts">
+          📞 <a href="tel:+79991234567">+7 (961) 137‑13‑31</a> &nbsp; 📧
+          <a href="mailto:info@smolmaf.ru">info@smolmaf.ru</a>
+        </div>
+      </nav>
+    </div>
+    <section class="coop-wrapper">
+      <div class="coop-hero">
+        <h1>🤝 Сотрудничество с СмолМАФ</h1>
+        <p>
+          Мы открыты к работе с застройщиками, архитекторами, девелоперами,
+          управляющими компаниями, муниципалитетами и компаниями по
+          благоустройству. Вместе мы формируем облик городов будущего.
+        </p>
+        <!-- Кнопка вызова формы -->
+<a href="#" class="btn-primary" id="openModal">📩 Стать партнёром</a>
+
+<div id="modalForm" class="modal-overlay">
+  <div class="modal-content">
+    <span class="modal-close" id="closeModal">&times;</span>
+    <h2>🤝 Форма партнёрства</h2>
+    <form id="partnerForm" class="popup-form">
+      <label>Имя:</label>
+      <input type="text" class="form-name" required />
+      <div class="name-error" style="display:none; color:red;">❌ Минимум 2 буквы</div>
+
+      <label>Телефон:</label>
+      <input type="tel" class="form-phone" required placeholder="+7 (___) ___-__-__" />
+
+      <label>Название компании:</label>
+      <input type="text" class="form-company" required />
+
+      <label>ИНН:</label>
+      <input type="text" class="form-inn" required />
+
+       <textarea class="form-comment" placeholder="Комментарий"></textarea>
+
+      <button type="button" class="send-btn">📩 Отправить</button>
+    </form>
+    <div id="custom-alert" class="custom-alert">
+      <div id="custom-alert-text"></div>
+    </div>
+  </div>
+</div>
+
+      <div class="coop-features">
+        <h2>Почему выбирают нас</h2>
+        <ul class="feature-list">
+          <li>
+            <h3>📐 Изготовление по проекту</h3>
+            <p>
+              Работаем по вашим эскизам, CAD-моделям или техническому заданию.
+            </p>
+          </li>
+          <li>
+            <h3>⚖️ Участие в тендерах</h3>
+            <p>Подключаемся к госзакупкам и конкурсным предложениям.</p>
+          </li>
+          <li>
+            <h3>✅ Гарантия сроков</h3>
+            <p>Соблюдаем дедлайны, обеспечиваем полный контроль качества.</p>
+          </li>
+          <li>
+            <h3>🎯 Консалтинг по дизайну</h3>
+            <p>Помогаем на этапе проектирования и подбора материалов.</p>
+          </li>
+          <li>
+            <h3>🚚 Доставка по РФ и СНГ</h3>
+            <p>Организуем логистику: от малых партий до масштабных поставок.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="coop-cta-final">
+        <p>
+          💡 Идея, предложение или запрос? Напишите нам — мы открыты к диалогу.
+        </p>
+        <a href="mailto:kuulagin@gmail.com" class="btn-outline"
+          >Связаться с нами</a
+        >
+      </div>
+    </section>
+
+    <script src="coop.js"></script>
+    <script src="size.js"></script>
+    
+    <div class="floating-panel">
+     <a href="https://chat.whatsapp.com/KIjz1LzFglzDJLW7EFCMtM?mode=ac_t" class="whatsapp" target="_blank">💬WhatsApp</a>
+      <a href="https://t.me/smolMAF" class="telegram" target="_blank">📩Telegram</a>
+    </div>
+    <script src="scripts/translate.js"></script>
+  </body>
+  <footer>
+      <p>© 2015 - 2025 smolmaf.ru — Все права защищены</p>
+    </footer>
+</html>

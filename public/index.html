@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="keywords"
+      content="СмолМАФ, МАФы, металлоконструкции, сварка, лавочки, беседки, урны, контейнеры, ограждения, Сафоново"
+    />
+    <meta
+      name="description"
+      content="Изготовление МАФов, металлоконструкций, сварка. Смоленская область. Индивидуальные проекты и доставка. СмолМАФ — качество и надёжность."
+    />
+    <link rel="canonical" href="https://smolmaf.ru/index.html" />
+    <meta property="og:title" content="СмолМАФ — МАФы и металлоконструкции" />
+    <meta
+      property="og:description"
+      content="Качественные изделия и услуги по сварке и благоустройству от СмолМАФ."
+    />
+    <meta property="og:image" content="https://smolmaf.ru/images/logo.jpg" />
+    <meta property="og:url" content="https://smolmaf.ru/index.html" />
+    <title>СмолМАФ — Производство МАФ и металлоконструкций</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "[СмолМАФ]",
+        "url": "https://smolmaf.ru",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://smolmaf.ru/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- Навигационная панель -->
+    <div class="nav-wrapper">
+      <div class="nav-glow"></div>
+      <!-- эффект свечения, если нужен -->
+      <nav class="top-navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">🏠 Главная</a></li>
+          <li><a href="services.html">🛠 Услуги</a></li>
+          <li><a href="cooperation.html">🤝 Сотрудничество</a></li>
+          <li class="dropdown">
+            <a href="#">🛒 Товары ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="mafs.html">🪑 Скамейки</a></li>
+              <li><a href="bins.html">🗑 Контейнеры / Урны</a></li>
+              <li><a href="fences.html">🚧 Ограждения</a></li>
+              <li><a href="metal.html">🏗 Металлоконструкции</a></li>
+              <li><a href="loft.html">🏙 Лофт стиль</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html">📌 О нас</a></li>
+          <li><a href="faq.html">❓ Частые вопросы </a></li>
+          <li><a href="contact.html">📞 Контакты</a></li>
+        </ul>
+
+        <div class="nav-contacts">
+          📞 <a href="tel:+79991234567">+7 (961) 137‑13‑31</a> &nbsp; 📧
+          <a href="mailto:info@smolmaf.ru">info@smolmaf.ru</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Шапка сайта с фоном -->
+    <header class="hero-header">
+      <div class="overlay">
+        <img src="welder-logo.jpg" alt="СмолМАФ" class="logo" />
+        <h1>
+          С любовью к деталям — с 2015 года<br />Стабильность, опыт, качество
+        </h1>
+        <h3>
+          Cоздаём и устанавливаем надёжные малые архитектурные формы: скамейки,
+          урны, беседки, ограждения, заборы, металлоконструкции — всё, что
+          делает городской или частный интерьер комфортным и красивым.<br />
+          Мы работаем под каждый заказ, учитывая ваши пожелания, стиль и
+          цели.<br />От эскиза до монтажа — всё под контролем профессионалов.<br />
+        </h3>
+        <!-- 📨 Кнопка запуска модалки -->
+        <!-- 📨 Кнопка запуска модалки -->
+        <p>
+          <a href="#" class="btn open-form-btn">Оставить заявку</a>
+        </p>
+
+        <!-- 📋 Модальное окно -->
+        <div id="contact-form-modal" class="modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Оставьте заявку</h2>
+            <form id="contact-form">
+              <label for="name">Имя:</label>
+              <input type="text" id="name" required />
+
+              <label for="phone">Телефон:</label>
+              <input
+                type="tel"
+                id="phone"
+                placeholder="+7 (999) 123-45-67"
+                required
+              />
+
+              <label for="comment">Комментарий:</label>
+              <textarea id="comment" rows="4" required></textarea>
+
+              <button type="submit">📩 Отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="floating-panel">
+      <a
+        href="https://chat.whatsapp.com/KIjz1LzFglzDJLW7EFCMtM?mode=ac_t"
+        class="whatsapp"
+        target="_blank"
+        >💬WhatsApp</a
+      >
+      <a href="https://t.me/smolMAF" class="telegram" target="_blank"
+        >📩Telegram</a
+      >
+    </div>
+    <div id="custom-alert" class="custom-alert info">
+      <p id="custom-alert-text">Ваше сообщение</p>
+    </div>
+
+    <!-- ✅ Подключаем маску -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/bindings/inputmask.binding.min.js"></script>
+
+    <!-- ✅ Затем подключаем наш скрипт -->
+    <script src="scriptValidacia.js"></script>
+
+    <script>
+      AOS.init();
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
