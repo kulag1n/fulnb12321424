@@ -1,24 +1,110 @@
+---
+title: "Лофт стиль — интерьер с характером"
+description: "Лофт — это свобода, простор и индустриальная эстетика. Узнай, как создать интерьер в стиле лофт."
+keywords: "лофт, интерьер, стиль, дизайн, квартира, индустриальный"
+canonical: "https://smolmaf.ru/loft/"
+image: "image5/1.jpg"
+og_image: "image5/1.jpg"
+twitter_image: "image5/1.jpg"
+robots: "index, follow"
+lang: "ru"
+author: "SMOLMAF"
+image_folder: "loft"
+layout: "default"
+permalink: "/loft/"
+json_ld:
+  "@context": "https://schema.org"
+  "@type": "Article"
+  "headline": "Лофт стиль — интерьер с характером"
+  "image": "https://smolmaf.ru/assets/img/loft/image5/1.jpg"
+  "author": { "@type": "Organization", "name": "SMOLMAF" }
+  "publisher":
+    {
+      "@type": "Organization",
+      "name": "SMOLMAF",
+      "logo":
+        {
+          "@type": "ImageObject",
+          "url": "https://smolmaf.ru/assets/img/logo.png",
+        },
+    }
+  "datePublished": "2025-08-07"
+---
+
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Лофт стиль — Мебель для городского пространства</title>
-    <meta
-      name="description"
-      content="Изделия в лофт стиле: скамейки, урны, вазоны, малые архитектурные формы. Современный урбан-дизайн для парков, скверов и площадок."
-    />
-    <meta
-      name="keywords"
-      content="лофт мебель, урбанистика, архитектурный стиль, скамейки лофт, малые формы, лавочки в лофте"
-    />
-    <link rel="stylesheet" href="loft-style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}" />
+    <meta name="keywords" content="{{ page.keywords }}" />
+    <meta
+      name="robots"
+      content="{{ page.robots | default: 'index, follow' }}"
+    />
+    <link rel="canonical" href="{{ page.canonical }}" />
+    <link rel="stylesheet" href="loft-style.css" />
     <link
       rel="icon"
       href="https://smolmaf.ru/favicon.ico"
       type="image/x-icon"
     />
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="{{ page.og_title | default: page.title }}"
+    />
+    <meta
+      property="og:description"
+      content="{{ page.og_description | default: page.description }}"
+    />
+    <meta
+      property="og:image"
+      content="{{ page.og_image | default: page.image }}"
+    />
+    <meta
+      property="og:url"
+      content="{{ page.og_url | default: page.canonical }}"
+    />
+    <meta
+      property="og:type"
+      content="{{ page.og_type | default: 'product' }}"
+    />
+
+    <!-- Twitter Card -->
+    <meta
+      name="twitter:card"
+      content="{{ page.twitter_card | default: 'summary_large_image' }}"
+    />
+    <meta
+      name="twitter:title"
+      content="{{ page.twitter_title | default: page.title }}"
+    />
+    <meta
+      name="twitter:description"
+      content="{{ page.twitter_description | default: page.description }}"
+    />
+    <meta
+      name="twitter:image"
+      content="{{ page.twitter_image | default: page.image }}"
+    />
+
+    <!-- Language & Author -->
+    <meta name="author" content="{{ page.author | default: 'SMOLMAF' }}" />
+    <meta
+      http-equiv="Content-Language"
+      content="{{ page.lang | default: 'ru' }}"
+    />
+
+    <!-- Structured Data (JSON-LD) -->
+    {% if page.json_ld %}
+    <script type="application/ld+json">
+      {{ page.json_ld | jsonify }}
+    </script>
+    {% endif %}
+
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
       (function (m, e, t, r, i, k, a) {
@@ -75,20 +161,20 @@
       <nav class="top-navbar">
         <ul class="nav-links">
           <li><a href="index.html">🏠 Главная</a></li>
-          <li><a href="services.html">🛠 Услуги</a></li>
-          <li><a href="cooperation.html">🤝 Сотрудничество</a></li>
+          <li><a href="services/index.html">🛠 Услуги</a></li>
+          <li><a href="cooperation/index.html">🤝 Сотрудничество</a></li>
           <li class="dropdown">
             <a href="#">🛒 Товары ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="mafs.html">🪑 Скамейки</a></li>
-              <li><a href="bins.html">🗑 Контейнеры / Урны</a></li>
-              <li><a href="fences.html">🚧 Ограждения</a></li>
-              <li><a href="metal.html">🏗 Металлоконструкции</a></li>
+              <li><a href="mafs/index.html">🪑 Скамейки</a></li>
+              <li><a href="bins/index.html">🗑 Контейнеры / Урны</a></li>
+              <li><a href="fences/index.html">🚧 Ограждения</a></li>
+              <li><a href="metal/index.html">🏗 Металлоконструкции</a></li>
             </ul>
           </li>
-          <li><a href="about.html">📌 О нас</a></li>
-          <li><a href="faq.html">❓ Частые вопросы</a></li>
-          <li><a href="contact.html">📞 Контакты</a></li>
+          <li><a href="/about/">📌 О нас</a></li>
+          <li><a href="/faq/">❓ Частые вопросы </a></li>
+          <li><a href="/contact/">📞 Контакты</a></li>
         </ul>
 
         <div class="nav-contacts">

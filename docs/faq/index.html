@@ -1,21 +1,36 @@
+---
+layout: default
+title: Вопросы и ответы | SMOLMAF
+description: Часто задаваемые вопросы о продукции, доставке, оплате и сотрудничестве с SMOLMAF.
+keywords: FAQ, вопросы, ответы, доставка, заказ, SMOLMAF, МАФ, металлоконструкции
+permalink: /faq/
+canonical: https://smolmaf.ru/faq/
+author: SMOLMAF
+lang: ru
+robots: index, follow
+og_title: FAQ SMOLMAF — Часто задаваемые вопросы
+og_description: Ответы на популярные вопросы о продукции и услугах SMOLMAF.
+og_image: https://smolmaf.ru/assets/img/faq-og.jpg
+og_url: https://smolmaf.ru/faq/
+og_type: article
+twitter_card: summary_large_image
+twitter_title: FAQ SMOLMAF
+twitter_description: Всё, что вы хотели знать о SMOLMAF: доставка, заказ, производство.
+twitter_image: https://smolmaf.ru/assets/img/faq-twitter.jpg
+---
+
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Частые вопросы по металлообработке — Smolmaf</title>
-    <meta
-      name="description"
-      content="Ответы на популярные вопросы о сварке, монтаже и изготовлении металлоконструкций. Полезная информация от компании Smolmaf."
-    />
-    <meta
-      name="keywords"
-      content="FAQ, часто задаваемые вопросы, сварка, металлоконструкции, монтаж, заказ, Smolmaf"
-    />
-    <meta name="robots" content="index, follow" />
 
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}" />
+    <meta name="keywords" content="{{ page.keywords }}" />
+    <meta name="robots" content="{{ page.robots | default: 'index, follow' }}" />
+    <link rel="canonical" href="{{ page.canonical }}" />
     <link rel="icon" href="https://smolmaf.ru/favicon.ico" type="image/x-icon" />
-
     <link rel="stylesheet" href="faq-style.css" />
 
     <!-- Open Graph -->
@@ -28,40 +43,30 @@
     <meta property="og:url" content="https://smolmaf.ru/faq.html" />
     <meta name="twitter:card" content="summary_large_image" />
     
+     <!-- Open Graph -->
+    <meta property="og:title" content="{{ page.og_title | default: page.title }}" />
+    <meta property="og:description" content="{{ page.og_description | default: page.description }}" />
+    <meta property="og:image" content="{{ page.og_image | default: page.image }}" />
+    <meta property="og:url" content="{{ page.og_url | default: page.canonical }}" />
+    <meta property="og:type" content="{{ page.og_type | default: 'website' }}" />
 
-    <!-- Schema.org JSON-LD -->
+  <!-- Twitter Card -->
+    <meta name="twitter:card" content="{{ page.twitter_card | default: 'summary_large_image' }}" />
+    <meta name="twitter:title" content="{{ page.twitter_title | default: page.title }}" />
+    <meta name="twitter:description" content="{{ page.twitter_description | default: page.description }}" />
+    <meta name="twitter:image" content="{{ page.twitter_image | default: page.image }}" />
+
+  <!-- Language & Author -->
+    <meta name="author" content="{{ page.author | default: 'SMOLMAF' }}" />
+    <meta http-equiv="Content-Language" content="{{ page.lang | default: 'ru' }}" />
+
+  <!-- Structured Data (JSON-LD) -->
+    {% if page.json_ld %}
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Сколько длится изготовление металлической конструкции?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "В среднем 5–10 рабочих дней в зависимости от объёма и сложности проекта."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Вы работаете только по готовым чертежам?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Нет, мы разрабатываем проект совместно с заказчиком или по техническому заданию."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Какой металл вы используете?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Углеродистая и легированная сталь, алюминий, оцинкованные материалы — всё сертифицировано."
-            }
-          }
-        ]
-      }
+    {{ page.json_ld | jsonify }}
     </script>
+    {% endif %}
+
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -86,22 +91,22 @@
         <nav class="top-navbar">
           <ul class="nav-links">
             <li><a href="index.html">🏠 Главная</a></li>
-            <li><a href="services.html">🛠 Услуги</a></li>
-            <li><a href="cooperation.html">🤝 Сотрудничество</a></li>
-            <li class="dropdown">
-              <a href="#">🛒 Товары ▾</a>
-              <ul class="dropdown-menu">
-                <li><a href="mafs.html">🪑 Скамейки</a></li>
-                <li><a href="bins.html">🗑 Контейнеры / Урны</a></li>
-                <li><a href="fences.html">🚧 Ограждения</a></li>
-                <li><a href="metal.html">🏗 Металлоконструкции</a></li>
-                <li><a href="loft.html">🏙 Лофт стиль</a></li>
-              </ul>
-            </li>
-            <li><a href="about.html">📌 О нас</a></li>
-            <li><a href="faq.html">❓ Частые вопросы </a></li>
-            <li><a href="contact.html">📞 Контакты</a></li>
-          </ul>
+          <li><a href="services/index.html">🛠 Услуги</a></li>
+          <li><a href="cooperation/index.html">🤝 Сотрудничество</a></li>
+          <li class="dropdown">
+            <a href="#">🛒 Товары ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="mafs/index.html">🪑 Скамейки</a></li>
+              <li><a href="bins/index.html">🗑 Контейнеры / Урны</a></li>
+              <li><a href="fences/index.html">🚧 Ограждения</a></li>
+              <li><a href="metal/index.html">🏗 Металлоконструкции</a></li>
+              <li><a href="loft/index.html">🏙 Лофт стиль</a></li>
+            </ul>
+          </li>
+          <li><a href="/about/">📌 О нас</a></li>
+          <li><a href="/faq/">❓ Частые вопросы </a></li>
+          <li><a href="/contact/">📞 Контакты</a></li>
+        </ul>
 
           <div class="nav-contacts">
             📞 <a href="tel:+79991234567">+7 (961) 137‑13‑31</a> &nbsp; 📧

@@ -1,47 +1,77 @@
+---
+layout: default
+title: Производство МАФ и металлоконструкций | SMOLMAF — Лофт, Сварка, Дизайн
+description: SMOLMAF — эксперт в производстве малых архитектурных форм и металлоконструкций в стиле лофт. Сварка, монтаж, дизайн. Работаем по всей России. Гарантия качества.
+keywords: МАФ, металлоконструкции, лофт, сварка, монтаж, дизайн, Смоленск, уличная мебель, скамейки, урны, ограждения, производство, заказ, SMOLMAF
+permalink: /
+canonical: https://smolmaf.ru/
+author: SMOLMAF
+lang: ru
+robots: index, follow
+og_title: SMOLMAF — МАФ и металлоконструкции в стиле лофт
+og_description: Производство и продажа МАФ, металлоконструкций, уличной мебели. Современный дизайн, надёжная сварка, доставка по России.
+og_image: https://smolmaf.ru/assets/img/og-image.jpg
+og_url: https://smolmaf.ru/
+og_type: website
+twitter_card: summary_large_image
+twitter_title: SMOLMAF — Надёжные металлоконструкции и МАФ
+twitter_description: Сварка, монтаж, лофт-дизайн. Производство МАФ по ГОСТ. Работаем по всей России.
+twitter_image: https://smolmaf.ru/assets/img/twitter-card.jpg
+---
+
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="index, follow" />
-    <meta
-      name="keywords"
-      content="СмолМАФ, МАФы, металлоконструкции, сварка, лавочки, беседки, урны, контейнеры, ограждения, Сафоново"
-    />
-    <meta
-      name="description"
-      content="Изготовление МАФов, металлоконструкций, сварка. Смоленская область. Индивидуальные проекты и доставка. СмолМАФ — качество и надёжность."
-    />
-    <meta property="og:title" content="СмолМАФ — МАФы и металлоконструкции" />
-    <meta
-      property="og:description"
-      content="Качественные изделия и услуги по сварке и благоустройству от СмолМАФ."
-    />
-    <meta property="og:image" content="https://smolmaf.ru/images/logo.jpg" />
-    <meta property="og:url" content="https://smolmaf.ru/index.html" />
-    <title>СмолМАФ — Производство МАФ и металлоконструкций</title>
-    <link rel="canonical" href="https://smolmaf.ru/index.html" />
-    <link rel="stylesheet" href="style.css" />
 
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}" />
+    <meta name="keywords" content="{{ page.keywords }}" />
+    <meta
+      name="robots"
+      content="{{ page.robots | default: 'index, follow' }}"
+    />
+    <link rel="canonical" href="{{ page.canonical }}" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="icon"
       href="https://smolmaf.ru/favicon.ico"
       type="image/x-icon"
     />
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ page.og_title }}" />
+    <meta property="og:description" content="{{ page.og_description }}" />
+    <meta property="og:image" content="{{ page.og_image }}" />
+    <meta property="og:url" content="{{ page.og_url }}" />
+    <meta
+      property="og:type"
+      content="{{ page.og_type | default: 'website' }}"
+    />
 
+    <!-- Twitter Card -->
+    <meta
+      name="twitter:card"
+      content="{{ page.twitter_card | default: 'summary_large_image' }}"
+    />
+    <meta name="twitter:title" content="{{ page.twitter_title }}" />
+    <meta name="twitter:description" content="{{ page.twitter_description }}" />
+    <meta name="twitter:image" content="{{ page.twitter_image }}" />
+
+    <!-- Language & Author -->
+    <meta name="author" content="{{ page.author | default: 'SMOLMAF' }}" />
+    <meta
+      http-equiv="Content-Language"
+      content="{{ page.lang | default: 'ru' }}"
+    />
+
+    <!-- Structured Data (JSON-LD) -->
+    {% if page.json_ld %}
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "[СмолМАФ]",
-        "url": "https://smolmaf.ru",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://smolmaf.ru/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }
+      {{ page.json_ld | jsonify }}
     </script>
+    {% endif %}
+
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
       (function (m, e, t, r, i, k, a) {

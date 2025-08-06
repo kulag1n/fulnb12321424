@@ -1,28 +1,75 @@
+---
+layout: default
+title: Металлоконструкции от SMOLMAF | Производство и монтаж
+description: SMOLMAF — эксперт в производстве металлоконструкций: сварка, монтаж, дизайн. Работаем по ГОСТ, доставка по всей России.
+keywords: металлоконструкции, сварка, монтаж, производство, SMOLMAF, ГОСТ, заказ
+permalink: /metal/
+canonical: https://smolmaf.ru/metal/
+author: SMOLMAF
+lang: ru
+robots: index, follow
+changefreq: weekly
+priority: 0.9
+date: 2025-08-06
+last_modified_at: 2025-08-07
+image: https://smolmaf.ru/image4/2.png
+thumbnail: https://smolmaf.ru/image4/2.png
+
+og_title: Металлоконструкции SMOLMAF — Надёжность и ГОСТ
+og_description: Производство и монтаж металлоконструкций от SMOLMAF. Качество, опыт, доставка.
+og_image: https://smolmaf.ru/image4/2.png
+og_url: https://smolmaf.ru/metal/
+og_type: product
+
+twitter_card: summary_large_image
+twitter_title: Металлоконструкции SMOLMAF
+twitter_description: Надёжные металлоконструкции от SMOLMAF — сварка, монтаж, ГОСТ.
+twitter_image: https://smolmaf.ru/image4/2.png
+
+json_ld:
+  "@context": "https://schema.org"
+  "@type": "Product"
+  "name": "Металлоконструкции от SMOLMAF"
+  "image": "https://smolmaf.ru/image4/2.png"
+  "description": "Металлоконструкции от SMOLMAF —
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Металлоконструкции под заказ: навесы, каркасы, ограждения. Работа по ГОСТ, доставка, установка."
-    />
-    <link rel="canonical" href="https://smolmaf.ru/metal.html" />
-    <meta property="og:title" content="Металлоконструкции на заказ | СмолМАФ" />
-    <meta
-      property="og:description"
-      content="Надёжные и прочные конструкции из металла для любых задач."
-    />
-    <meta
-      property="og:image"
-      content="https://smolmaf.ru/images/metalworks.jpg"
-    />
-    <meta property="og:url" content="https://smolmaf.ru/metal.html" />
-    <title>Металлоконструкции — под заказ | СмолМАФ</title>
+
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}" />
+    <meta name="keywords" content="{{ page.keywords }}" />
+    <meta name="robots" content="{{ page.robots | default: 'index, follow' }}" />
+    <link rel="canonical" href="{{ page.canonical }}" />
     <link rel="stylesheet" href="metal-style.css" />
-
     <link rel="icon" href="https://smolmaf.ru/favicon.ico" type="image/x-icon" />
+    
+     <!-- Open Graph -->
+    <meta property="og:title" content="{{ page.og_title | default: page.title }}" />
+    <meta property="og:description" content="{{ page.og_description | default: page.description }}" />
+    <meta property="og:image" content="{{ page.og_image | default: page.image }}" />
+    <meta property="og:url" content="{{ page.og_url | default: page.canonical }}" />
+    <meta property="og:type" content="{{ page.og_type | default: 'product' }}" />
 
+
+  <!-- Twitter Card -->
+    <meta name="twitter:card" content="{{ page.twitter_card | default: 'summary_large_image' }}" />
+    <meta name="twitter:title" content="{{ page.twitter_title | default: page.title }}" />
+    <meta name="twitter:description" content="{{ page.twitter_description | default: page.description }}" />
+    <meta name="twitter:image" content="{{ page.twitter_image | default: page.image }}" />
+
+    <!-- Language & Author -->
+    <meta name="author" content="{{ page.author | default: 'SMOLMAF' }}" />
+    <meta http-equiv="Content-Language" content="{{ page.lang | default: 'ru' }}" />
+
+  <!-- Structured Data (JSON-LD) -->
+    {% if page.json_ld %}
+    <script type="application/ld+json">
+    {{ page.json_ld | jsonify }}
+    </script>
+    {% endif %}
 
   </head>
 
@@ -34,21 +81,21 @@
       <nav class="top-navbar">
         <ul class="nav-links">
           <li><a href="index.html">🏠 Главная</a></li>
-          <li><a href="services.html">🛠 Услуги</a></li>
-          <li><a href="cooperation.html">🤝 Сотрудничество</a></li>
+          <li><a href="services/index.html">🛠 Услуги</a></li>
+          <li><a href="cooperation/index.html">🤝 Сотрудничество</a></li>
           <li class="dropdown">
             <a href="#">🛒 Товары ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="mafs.html">🪑 Скамейки</a></li>
-              <li><a href="bins.html">🗑 Контейнеры / Урны</a></li>
-              <li><a href="fences.html">🚧 Ограждения</a></li>
-
-              <li><a href="loft.html">🏙 Лофт стиль</a></li>
+              <li><a href="mafs/index.html">🪑 Скамейки</a></li>
+              <li><a href="bins/index.html">🗑 Контейнеры / Урны</a></li>
+              <li><a href="fences/index.html">🚧 Ограждения</a></li>
+              
+              <li><a href="loft/index.html">🏙 Лофт стиль</a></li>
             </ul>
           </li>
-          <li><a href="about.html">📌 О нас</a></li>
-          <li><a href="faq.html">❓ Частые вопросы </a></li>
-          <li><a href="contact.html">📞 Контакты</a></li>
+          <li><a href="/about/">📌 О нас</a></li>
+          <li><a href="/faq/">❓ Частые вопросы </a></li>
+          <li><a href="/contact/">📞 Контакты</a></li>
         </ul>
 
         <div class="nav-contacts">

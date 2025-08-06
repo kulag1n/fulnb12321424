@@ -1,24 +1,85 @@
+---
+layout: default
+title: Ограждения от SMOLMAF | Металлоконструкции для улиц
+description: Уличные ограждения от SMOLMAF — надёжные конструкции, современный дизайн, производство по ГОСТ. Доставка по всей России.
+keywords: ограждения, уличные конструкции, металлоконструкции, SMOLMAF, лофт, МАФ, производство, заборы.
+permalink: /fences/
+canonical: https://smolmaf.ru/fences/
+author: SMOLMAF
+lang: ru
+robots: index, follow
+changefreq: weekly
+priority: 0.85
+date: 2025-08-06
+last_modified_at: 2025-08-07
+image: https://smolmaf.ru/image3/19.jpg
+thumbnail: https://smolmaf.ru/image3/19.jpg
+
+og_title: Ограждения SMOLMAF — Эстетика и безопасность
+og_description: Металлические ограждения от SMOLMAF — стиль, надёжность, ГОСТ.
+og_image: https://smolmaf.ru/image3/19.jpg
+og_url: https://smolmaf.ru/fences/
+og_type: product
+
+twitter_card: summary_large_image
+twitter_title: Ограждения SMOLMAF — Уличные конструкции
+twitter_description: Производство ограждений — надёжные металлоконструкции от SMOLMAF.
+twitter_image: https://smolmaf.ru/image3/19.jpg
+
+json_ld:
+  "@context": "https://schema.org"
+  "@type": "Product"
+  "name": "Ограждения от SMOLMAF"
+  "image": "https://smolmaf.ru/image3/19.jpg"
+  "description": "Металлические ограждения — эстетика, безопасность, ГОСТ."
+  "brand":
+    "@type": "Brand"
+    "name": "SMOLMAF"
+  "offers":
+    "@type": "Offer"
+    "url": "https://smolmaf.ru/fences/"
+    "priceCurrency": "RUB"
+    "availability": "https://schema.org/InStock"
+---
+
+
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Ограждения для парков, дворов, улиц и объектов. Металл, порошковая покраска, монтаж."
-    />
-    <link rel="canonical" href="https://smolmaf.ru/fences.html" />
-    <meta property="og:title" content="Металлические ограждения | СмолМАФ" />
-    <meta
-      property="og:description"
-      content="Стильные и надёжные ограждения для города и частных участков."
-    />
-    <meta property="og:image" content="https://smolmaf.ru/images/fences.jpg" />
-    <meta property="og:url" content="https://smolmaf.ru/fences.html" />
-    <title>Ограждения — декоративные и технические | СмолМАФ</title>
-    <link rel="stylesheet" href="fances-style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" href="https://smolmaf.ru/favicon.ico" type="image/x-icon" />
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description }}" />
+  <meta name="keywords" content="{{ page.keywords }}" />
+  <meta name="robots" content="{{ page.robots | default: 'index, follow' }}" />
+  <link rel="canonical" href="{{ page.canonical }}" />
+  <link rel="stylesheet" href="fances-style.css" />
+  <link rel="icon" href="https://smolmaf.ru/favicon.ico" type="image/x-icon" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.og_title | default: page.title }}" />
+  <meta property="og:description" content="{{ page.og_description | default: page.description }}" />
+  <meta property="og:image" content="{{ page.og_image | default: page.image }}" />
+  <meta property="og:url" content="{{ page.og_url | default: page.canonical }}" />
+  <meta property="og:type" content="{{ page.og_type | default: 'product' }}" />
+
+   <!-- Twitter Card -->
+  <meta name="twitter:card" content="{{ page.twitter_card | default: 'summary_large_image' }}" />
+  <meta name="twitter:title" content="{{ page.twitter_title | default: page.title }}" />
+  <meta name="twitter:description" content="{{ page.twitter_description | default: page.description }}" />
+  <meta name="twitter:image" content="{{ page.twitter_image | default: page.image }}" />
+
+  <!-- Language & Author -->
+  <meta name="author" content="{{ page.author | default: 'SMOLMAF' }}" />
+  <meta http-equiv="Content-Language" content="{{ page.lang | default: 'ru' }}" />
+
+  <!-- Structured Data (JSON-LD) -->
+  {% if page.json_ld %}
+  <script type="application/ld+json">
+  {{ page.json_ld | jsonify }}
+  </script>
+  {% endif %}
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -44,21 +105,21 @@
       <nav class="top-navbar">
         <ul class="nav-links">
           <li><a href="index.html">🏠 Главная</a></li>
-          <li><a href="services.html">🛠 Услуги</a></li>
-          <li><a href="cooperation.html">🤝 Сотрудничество</a></li>
+          <li><a href="services/index.html">🛠 Услуги</a></li>
+          <li><a href="cooperation/index.html">🤝 Сотрудничество</a></li>
           <li class="dropdown">
             <a href="#">🛒 Товары ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="mafs.html">🪑 Скамейки</a></li>
-              <li><a href="bins.html">🗑 Контейнеры / Урны</a></li>
+              <li><a href="mafs/index.html">🪑 Скамейки</a></li>
+              <li><a href="bins/index.html">🗑 Контейнеры / Урны</a></li>
               
-              <li><a href="metal.html">🏗 Металлоконструкции</a></li>
-              <li><a href="loft.html">🏙 Лофт стиль</a></li>
+              <li><a href="metal/index.html">🏗 Металлоконструкции</a></li>
+              <li><a href="loft/index.html">🏙 Лофт стиль</a></li>
             </ul>
           </li>
-          <li><a href="about.html">📌 О нас</a></li>
-          <li><a href="faq.html">❓ Частые вопросы </a></li>
-          <li><a href="contact.html">📞 Контакты</a></li>
+          <li><a href="/about/">📌 О нас</a></li>
+          <li><a href="/faq/">❓ Частые вопросы </a></li>
+          <li><a href="/contact/">📞 Контакты</a></li>
         </ul>
 
         <div class="nav-contacts">

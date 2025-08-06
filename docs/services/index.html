@@ -1,62 +1,60 @@
+---
+layout: default
+title: Услуги SMOLMAF | Сварка, монтаж, производство МАФ и конструкций
+description: SMOLMAF предлагает услуги по сварке, монтажу и производству металлоконструкций и МАФ. Работаем по всей России. Индивидуальный подход.
+keywords: услуги, сварка, монтаж, производство, металлоконструкции, МАФ, заказ, дизайн, SMOLMAF
+permalink: /services/
+canonical: https://smolmaf.ru/services/
+author: SMOLMAF
+lang: ru
+robots: index, follow
+og_title: Услуги SMOLMAF — Сварка, монтаж, производство
+og_description: Полный спектр услуг от SMOLMAF: сварка, монтаж, дизайн, производство МАФ и конструкций.
+og_image: https://smolmaf.ru/assets/img/services-og.jpg
+og_url: https://smolmaf.ru/services/
+og_type: article
+twitter_card: summary_large_image
+twitter_title: Услуги SMOLMAF — Сварка, монтаж, производство
+twitter_description: Закажите услуги SMOLMAF: сварка, монтаж, производство металлоконструкций и МАФ.
+twitter_image: https://smolmaf.ru/assets/img/services-twitter.jpg
+---
+
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Услуги | Сварка, монтаж, изготовление — smolmaf.ru</title>
-    <meta
-      name="description"
-      content="Все услуги от smolmaf.ru: сварка металлоконструкций, монтаж, изготовление. Надёжность, опыт, качество."
-    />
-    <meta
-      name="keywords"
-      content="сварка, монтаж, металлоконструкции, изготовление, услуги, smolmaf"
-    />
-    <link rel="canonical" href="https://smolmaf.ru/services.html" />
+
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}" />
+    <meta name="keywords" content="{{ page.keywords }}" />
+    <meta name="robots" content="{{ page.robots | default: 'index, follow' }}" />
+    <link rel="canonical" href="{{ page.canonical }}" />
     <link rel="stylesheet" href="services-style.css" />
-    <link rel="icon" href="https://smolmaf.ru/favicon.svg" type="image/svg+xml"/>
+    <link rel="icon" href="https://smolmaf.ru/favicon.ico" type="image/x-icon"/>
     <!-- Open Graph -->
-    <meta property="og:title" content="Услуги от smolmaf.ru" />
-    <meta
-      property="og:description"
-      content="Профессиональная сварка, монтаж конструкций и изготовление изделий. Узнайте, что мы предлагаем!"
-    />
-    <meta property="og:url" content="https://smolmaf.ru/services.html" />
-    <meta
-      property="og:image"
-      content="https://smolmaf.ru/img/services-preview.jpg"
-    />
+    <meta property="og:title" content="{{ page.og_title | default: page.title }}" />
+    <meta property="og:description" content="{{ page.og_description | default: page.description }}" />
+    <meta property="og:image" content="{{ image_path }}{{ page.og_image }}" />
+    <meta property="og:url" content="{{ page.og_url | default: page.canonical }}" />
+    <meta property="og:type" content="{{ page.og_type | default: 'website' }}" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Услуги smolmaf.ru" />
-    <meta
-      name="twitter:description"
-      content="Все виды металлоуслуг от smolmaf: качество и точность!"
-    />
-    <meta
-      name="twitter:image"
-      content="https://smolmaf.ru/img/services-preview.jpg"
-    />
+  <!-- Twitter Card -->
+    <meta name="twitter:card" content="{{ page.twitter_card | default: 'summary_large_image' }}" />
+    <meta name="twitter:title" content="{{ page.twitter_title | default: page.title }}" />
+    <meta name="twitter:description" content="{{ page.twitter_description | default: page.description }}" />
+    <meta name="twitter:image" content="{{ image_path }}{{ page.twitter_image }}" />
 
-    <!-- Structured Data -->
+  <!-- Language & Author -->
+    <meta name="author" content="{{ page.author | default: 'SMOLMAF' }}" />
+    <meta http-equiv="Content-Language" content="{{ page.lang | default: 'ru' }}" />
+
+  <!-- Structured Data -->
+    {% if page.json_ld %}
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "Сварка, монтаж, изготовление металлоконструкций",
-        "provider": {
-          "@type": "Organization",
-          "name": "smolmaf.ru",
-          "url": "https://smolmaf.ru",
-          "logo": "https://smolmaf.ru/img/logo.png"
-        },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "description": "Компания smolmaf.ru предлагает услуги сварки, монтажа и изготовления металлоконструкций. Надёжность, опыт, качество."
-      }
+    {{ page.json_ld | jsonify }}
+    </script>
+    {% endif %}
     </script>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -80,21 +78,21 @@
       <nav class="top-navbar">
         <ul class="nav-links">
           <li><a href="index.html">🏠 Главная</a></li>
-          <li><a href="services.html">🛠 Услуги</a></li>
-          <li><a href="cooperation.html">🤝 Сотрудничество</a></li>
+          <li><a href="services/index.html">🛠 Услуги</a></li>
+          <li><a href="cooperation/index.html">🤝 Сотрудничество</a></li>
           <li class="dropdown">
             <a href="#">🛒 Товары ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="mafs.html">🪑 Скамейки</a></li>
-              <li><a href="bins.html">🗑 Контейнеры / Урны</a></li>
-              <li><a href="fences.html">🚧 Ограждения</a></li>
-              <li><a href="metal.html">🏗 Металлоконструкции</a></li>
-              <li><a href="loft.html">🏙 Лофт стиль</a></li>
+              <li><a href="mafs/index.html">🪑 Скамейки</a></li>
+              <li><a href="bins/index.html">🗑 Контейнеры / Урны</a></li>
+              <li><a href="fences/index.html">🚧 Ограждения</a></li>
+              <li><a href="metal/index.html">🏗 Металлоконструкции</a></li>
+              <li><a href="loft/index.html">🏙 Лофт стиль</a></li>
             </ul>
           </li>
-          <li><a href="about.html">📌 О нас</a></li>
-          <li><a href="faq.html">❓ Частые вопросы </a></li>
-          <li><a href="contact.html">📞 Контакты</a></li>
+          <li><a href="/about/">📌 О нас</a></li>
+          <li><a href="/faq/">❓ Частые вопросы </a></li>
+          <li><a href="/contact/">📞 Контакты</a></li>
         </ul>
 
         <div class="nav-contacts">

@@ -1,38 +1,61 @@
+---
+layout: default
+title: Сотрудничество с SMOLMAF | Партнёрские программы
+description: Станьте партнёром SMOLMAF — надёжное сотрудничество в сфере производства металлоконструкций и МАФ.
+keywords: сотрудничество, партнёрство, SMOLMAF, дилеры, поставки, производство
+permalink: /cooperation/
+canonical: https://smolmaf.ru/cooperation/
+author: SMOLMAF
+lang: ru
+robots: index, follow
+og_title: Сотрудничество с SMOLMAF
+og_description: Партнёрские программы, дилерство, совместные проекты. Присоединяйтесь к SMOLMAF.
+og_image: https://smolmaf.ru/assets/img/cooperation-og.jpg
+og_url: https://smolmaf.ru/cooperation/
+og_type: article
+twitter_card: summary_large_image
+twitter_title: Сотрудничество с SMOLMAF
+twitter_description: Станьте партнёром SMOLMAF — надёжность, качество, поддержка.
+twitter_image: https://smolmaf.ru/assets/img/cooperation-twitter.jpg
+---
+
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Сотрудничество с СмолМАФ | Металлоконструкции по заказу</title>
 
-    <meta
-      name="description"
-      content="Предлагаем взаимовыгодное сотрудничество архитекторам, застройщикам, муниципалитетам и компаниям..."
-    />
-    <meta
-      name="keywords"
-      content="сотрудничество, партнёрство, металлоконструкции, благоустройство..."
-    />
-    <meta
-      property="og:title"
-      content="Сотрудничество с СмолМАФ | Партнёрские решения"
-    />
-    <meta
-      property="og:description"
-      content="Совместное развитие городских пространств..."
-    />
-    <meta property="og:image" content="images/partnership.jpg" />
-    <meta
-      property="og:url"
-      content="https://smolmaf.ru/cooperation/index.html"
-    />
-    <link rel="canonical" href="https://smolmaf.ru/cooperation/index.html" />
-
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}" />
+    <meta name="keywords" content="{{ page.keywords }}" />
+    <meta name="robots" content="{{ page.robots | default: 'index, follow' }}" />
+    <link rel="canonical" href="{{ page.canonical }}" />
     <link rel="icon" href="https://smolmaf.ru/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="cooperation-style.css" />
-    
+      <!-- Open Graph -->
+    <meta property="og:title" content="{{ page.og_title | default: page.title }}" />
+    <meta property="og:description" content="{{ page.og_description | default: page.description }}" />
+    <meta property="og:image" content="{{ page.og_image | default: page.image }}" />
+    <meta property="og:url" content="{{ page.og_url | default: page.canonical }}" />
+    <meta property="og:type" content="{{ page.og_type | default: 'website' }}" />
 
-    <link rel="stylesheet" href="cooperation-style.css" />
+  <!-- Twitter Card -->
+    <meta name="twitter:card" content="{{ page.twitter_card | default: 'summary_large_image' }}" />
+    <meta name="twitter:title" content="{{ page.twitter_title | default: page.title }}" />
+    <meta name="twitter:description" content="{{ page.twitter_description | default: page.description }}" />
+    <meta name="twitter:image" content="{{ page.twitter_image | default: page.image }}" />
+
+  <!-- Language & Author -->
+    <meta name="author" content="{{ page.author | default: 'SMOLMAF' }}" />
+    <meta http-equiv="Content-Language" content="{{ page.lang | default: 'ru' }}" />
+
+  <!-- Structured Data (JSON-LD) -->
+    {% if page.json_ld %}
+    <script type="application/ld+json">
+    {{ page.json_ld | jsonify }}
+    </script>
+    {% endif %}
+    
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -46,7 +69,7 @@
     </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/103606756" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
->>>>>>> 3af916af26a78ae17eff28fa61ec09ee3b67cd82
+
   </head>
 
   <body>
@@ -57,21 +80,21 @@
       <nav class="top-navbar">
         <ul class="nav-links">
           <li><a href="index.html">🏠 Главная</a></li>
-          <li><a href="services.html">🛠 Услуги</a></li>
-          <li><a href="cooperation.html">🤝 Сотрудничество</a></li>
+          <li><a href="services/index.html">🛠 Услуги</a></li>
+          <li><a href="cooperation/index.html">🤝 Сотрудничество</a></li>
           <li class="dropdown">
             <a href="#">🛒 Товары ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="mafs.html">🪑 Скамейки</a></li>
-              <li><a href="bins.html">🗑 Контейнеры / Урны</a></li>
-              <li><a href="fences.html">🚧 Ограждения</a></li>
-              <li><a href="metal.html">🏗 Металлоконструкции</a></li>
-              <li><a href="loft.html">🏙 Лофт стиль</a></li>
+              <li><a href="mafs/index.html">🪑 Скамейки</a></li>
+              <li><a href="bins/index.html">🗑 Контейнеры / Урны</a></li>
+              <li><a href="fences/index.html">🚧 Ограждения</a></li>
+              <li><a href="metal/index.html">🏗 Металлоконструкции</a></li>
+              <li><a href="loft/index.html">🏙 Лофт стиль</a></li>
             </ul>
           </li>
-          <li><a href="about.html">📌 О нас</a></li>
-          <li><a href="faq.html">❓ Частые вопросы </a></li>
-          <li><a href="contact.html">📞 Контакты</a></li>
+          <li><a href="/about/">📌 О нас</a></li>
+          <li><a href="/faq/">❓ Частые вопросы </a></li>
+          <li><a href="/contact/">📞 Контакты</a></li>
         </ul>
 
         <div class="nav-contacts">
