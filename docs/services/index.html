@@ -1,61 +1,42 @@
----
-layout: default
-title: Услуги SMOLMAF | Сварка, монтаж, производство МАФ и конструкций
-description: SMOLMAF предлагает услуги по сварке, монтажу и производству металлоконструкций и МАФ. Работаем по всей России. Индивидуальный подход.
-keywords: услуги, сварка, монтаж, производство, металлоконструкции, МАФ, заказ, дизайн, SMOLMAF
-permalink: /services/
-canonical: https://smolmaf.ru/services/
-author: SMOLMAF
-lang: ru
-robots: index, follow
-og_title: Услуги SMOLMAF — Сварка, монтаж, производство
-og_description: Полный спектр услуг от SMOLMAF: сварка, монтаж, дизайн, производство МАФ и конструкций.
-og_image: https://smolmaf.ru/assets/img/services-og.jpg
-og_url: https://smolmaf.ru/services/
-og_type: article
-twitter_card: summary_large_image
-twitter_title: Услуги SMOLMAF — Сварка, монтаж, производство
-twitter_description: Закажите услуги SMOLMAF: сварка, монтаж, производство металлоконструкций и МАФ.
-twitter_image: https://smolmaf.ru/assets/img/services-twitter.jpg
----
-
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>{{ page.title }}</title>
-    <meta name="description" content="{{ page.description }}" />
-    <meta name="keywords" content="{{ page.keywords }}" />
-    <meta name="robots" content="{{ page.robots | default: 'index, follow' }}" />
-    <link rel="canonical" href="{{ page.canonical }}" />
+    
+    <title>Услуги SMOLMAF | Производство МАФ, мебели и металлоконструкций, обработка древесины, сварка авто..</title>
+    <meta
+    name="description"
+    content="SMOLMAF предлагает услуги по производству малых архитектурных форм, уличной мебели, металлоконструкций и благоустройству территорий."
+  />
+    <meta
+    name="keywords"
+    content="услуги, SMOLMAF, производство, МАФ, металлоконструкции, благоустройство, уличная мебель"
+  />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://smolmaf.ru/services/" />
     <link rel="stylesheet" href="services-style.css" />
     <link rel="icon" href="https://smolmaf.ru/favicon.ico" type="image/x-icon"/>
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ page.og_title | default: page.title }}" />
-    <meta property="og:description" content="{{ page.og_description | default: page.description }}" />
-    <meta property="og:image" content="{{ image_path }}{{ page.og_image }}" />
-    <meta property="og:url" content="{{ page.og_url | default: page.canonical }}" />
-    <meta property="og:type" content="{{ page.og_type | default: 'website' }}" />
+    <meta property="og:title" content="Услуги SMOLMAF — Производство МАФ и мебели" />
+    <meta
+    property="og:description"
+    content="Производим малые архитектурные формы, уличную мебель и металлоконструкции. Работаем по ГОСТ, доставка по России."
+  />
+    <meta property="og:image" content="https://smolmaf.ru/image/services.jpg" />
+    <meta property="og:url" content="https://smolmaf.ru/services/" />
+    <meta property="og:type" content="website" />
 
   <!-- Twitter Card -->
-    <meta name="twitter:card" content="{{ page.twitter_card | default: 'summary_large_image' }}" />
-    <meta name="twitter:title" content="{{ page.twitter_title | default: page.title }}" />
-    <meta name="twitter:description" content="{{ page.twitter_description | default: page.description }}" />
-    <meta name="twitter:image" content="{{ image_path }}{{ page.twitter_image }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Услуги SMOLMAF — Производство МАФ и мебели" />
+    <meta
+    name="twitter:description"
+    content="Производим уличную мебель, архитектурные формы и металлоконструкции. ГОСТ, доставка по России."
+  />
+    <meta name="twitter:image" content="https://smolmaf.ru/image/services.jpg" />
 
-  <!-- Language & Author -->
-    <meta name="author" content="{{ page.author | default: 'SMOLMAF' }}" />
-    <meta http-equiv="Content-Language" content="{{ page.lang | default: 'ru' }}" />
 
-  <!-- Structured Data -->
-    {% if page.json_ld %}
-    <script type="application/ld+json">
-    {{ page.json_ld | jsonify }}
-    </script>
-    {% endif %}
-    </script>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -77,26 +58,26 @@ twitter_image: https://smolmaf.ru/assets/img/services-twitter.jpg
       <!-- эффект свечения, если нужен -->
       <nav class="top-navbar">
         <ul class="nav-links">
-          <li><a href="index.html">🏠 Главная</a></li>
-          <li><a href="services/index.html">🛠 Услуги</a></li>
-          <li><a href="cooperation/index.html">🤝 Сотрудничество</a></li>
+          <li><a href="../index.html">🏠 Главная</a></li>
+          <li><a href="../services/index.html">🛠 Услуги</a></li>
+          <li><a href="../cooperation/index.html">🤝 Сотрудничество</a></li>
           <li class="dropdown">
             <a href="#">🛒 Товары ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="mafs/index.html">🪑 Скамейки</a></li>
-              <li><a href="bins/index.html">🗑 Контейнеры / Урны</a></li>
-              <li><a href="fences/index.html">🚧 Ограждения</a></li>
-              <li><a href="metal/index.html">🏗 Металлоконструкции</a></li>
-              <li><a href="loft/index.html">🏙 Лофт стиль</a></li>
+              <li><a href="../mafs/index.html">🪑 Скамейки</a></li>
+              <li><a href="../bins/index.html">🗑 Контейнеры / Урны</a></li>
+              <li><a href="../fences/index.html">🚧 Ограждения</a></li>
+              <li><a href="../metal/index.html">🏗 Металлоконструкции</a></li>
+              <li><a href="../loft/index.html">🏙 Лофт стиль</a></li>
             </ul>
           </li>
-          <li><a href="/about/">📌 О нас</a></li>
-          <li><a href="/faq/">❓ Частые вопросы </a></li>
-          <li><a href="/contact/">📞 Контакты</a></li>
+          <li><a href="../about/index.html">📌 О нас</a></li>
+          <li><a href="../faq/index.html">❓ Частые вопросы </a></li>
+          <li><a href="../contact/index.html">📞 Контакты</a></li>
         </ul>
 
         <div class="nav-contacts">
-          📞 <a href="tel:+79991234567">+7 (961) 137‑13‑31</a> &nbsp; 📧
+          📞 <a href="tel:+79611371331">+7 (961) 137‑13‑31</a> &nbsp; 📧
           <a href="mailto:info@smolmaf.ru">info@smolmaf.ru</a>
         </div>
       </nav>

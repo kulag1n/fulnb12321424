@@ -1,71 +1,29 @@
----
-layout: default
-title: Вопросы и ответы | SMOLMAF
-description: Часто задаваемые вопросы о продукции, доставке, оплате и сотрудничестве с SMOLMAF.
-keywords: FAQ, вопросы, ответы, доставка, заказ, SMOLMAF, МАФ, металлоконструкции
-permalink: /faq/
-canonical: https://smolmaf.ru/faq/
-author: SMOLMAF
-lang: ru
-robots: index, follow
-og_title: FAQ SMOLMAF — Часто задаваемые вопросы
-og_description: Ответы на популярные вопросы о продукции и услугах SMOLMAF.
-og_image: https://smolmaf.ru/assets/img/faq-og.jpg
-og_url: https://smolmaf.ru/faq/
-og_type: article
-twitter_card: summary_large_image
-twitter_title: FAQ SMOLMAF
-twitter_description: Всё, что вы хотели знать о SMOLMAF: доставка, заказ, производство.
-twitter_image: https://smolmaf.ru/assets/img/faq-twitter.jpg
----
-
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>{{ page.title }}</title>
-    <meta name="description" content="{{ page.description }}" />
-    <meta name="keywords" content="{{ page.keywords }}" />
-    <meta name="robots" content="{{ page.robots | default: 'index, follow' }}" />
-    <link rel="canonical" href="{{ page.canonical }}" />
+    
+    <title>Вопросы и ответы | FAQ SMOLMAF</title>
+    <meta name="description" content="Ответы на популярные вопросы о продукции SMOLMAF: доставка, материалы, ГОСТ, сотрудничество и гарантия." />
+    <meta name="keywords" content="вопросы и ответы, FAQ, SMOLMAF, доставка, гарантия, ГОСТ, сотрудничество, благоустройство" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://smolmaf.ru/faq/" />
     <link rel="icon" href="https://smolmaf.ru/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="faq-style.css" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="FAQ по металлообработке — Smolmaf" />
-    <meta
-      property="og:description"
-      content="Ответы на вопросы о сварке, монтаже конструкций и производстве под заказ от команды Smolmaf."
-    />
-    <meta property="og:image" content="https://smolmaf.ru/preview-faq.jpg" />
-    <meta property="og:url" content="https://smolmaf.ru/faq.html" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:title" content="FAQ SMOLMAF — Часто задаваемые вопросы" />
+    <meta property="og:description" content="Узнайте всё о продукции SMOLMAF: доставка, материалы, ГОСТ, сотрудничество и гарантия." />
+    <meta property="og:image" content="https://smolmaf.ru/image/1.jpg" />
+    <meta property="og:url" content="https://smolmaf.ru/faq/" />
+    <meta property="og:type" content="website" />
     
-     <!-- Open Graph -->
-    <meta property="og:title" content="{{ page.og_title | default: page.title }}" />
-    <meta property="og:description" content="{{ page.og_description | default: page.description }}" />
-    <meta property="og:image" content="{{ page.og_image | default: page.image }}" />
-    <meta property="og:url" content="{{ page.og_url | default: page.canonical }}" />
-    <meta property="og:type" content="{{ page.og_type | default: 'website' }}" />
-
-  <!-- Twitter Card -->
-    <meta name="twitter:card" content="{{ page.twitter_card | default: 'summary_large_image' }}" />
-    <meta name="twitter:title" content="{{ page.twitter_title | default: page.title }}" />
-    <meta name="twitter:description" content="{{ page.twitter_description | default: page.description }}" />
-    <meta name="twitter:image" content="{{ page.twitter_image | default: page.image }}" />
-
-  <!-- Language & Author -->
-    <meta name="author" content="{{ page.author | default: 'SMOLMAF' }}" />
-    <meta http-equiv="Content-Language" content="{{ page.lang | default: 'ru' }}" />
-
-  <!-- Structured Data (JSON-LD) -->
-    {% if page.json_ld %}
-    <script type="application/ld+json">
-    {{ page.json_ld | jsonify }}
-    </script>
-    {% endif %}
+      <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FAQ SMOLMAF — Ответы на ваши вопросы" />
+    <meta name="twitter:description" content="Ответы на популярные вопросы: доставка, ГОСТ, сотрудничество, гарантия." />
+    <meta name="twitter:image" content="https://smolmaf.ru/image/1.jpg" />
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -90,26 +48,26 @@ twitter_image: https://smolmaf.ru/assets/img/faq-twitter.jpg
         <!-- эффект свечения, если нужен -->
         <nav class="top-navbar">
           <ul class="nav-links">
-            <li><a href="index.html">🏠 Главная</a></li>
-          <li><a href="services/index.html">🛠 Услуги</a></li>
-          <li><a href="cooperation/index.html">🤝 Сотрудничество</a></li>
+            <li><a href="../index.html">🏠 Главная</a></li>
+          <li><a href="../services/index.html">🛠 Услуги</a></li>
+          <li><a href="../cooperation/index.html">🤝 Сотрудничество</a></li>
           <li class="dropdown">
             <a href="#">🛒 Товары ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="mafs/index.html">🪑 Скамейки</a></li>
-              <li><a href="bins/index.html">🗑 Контейнеры / Урны</a></li>
-              <li><a href="fences/index.html">🚧 Ограждения</a></li>
-              <li><a href="metal/index.html">🏗 Металлоконструкции</a></li>
-              <li><a href="loft/index.html">🏙 Лофт стиль</a></li>
+              <li><a href="../mafs/index.html">🪑 Скамейки</a></li>
+              <li><a href="../bins/index.html">🗑 Контейнеры / Урны</a></li>
+              <li><a href="../fences/index.html">🚧 Ограждения</a></li>
+              <li><a href="../metal/index.html">🏗 Металлоконструкции</a></li>
+              <li><a href="../loft/index.html">🏙 Лофт стиль</a></li>
             </ul>
           </li>
-          <li><a href="/about/">📌 О нас</a></li>
-          <li><a href="/faq/">❓ Частые вопросы </a></li>
-          <li><a href="/contact/">📞 Контакты</a></li>
+          <li><a href="../about/index.html">📌 О нас</a></li>
+          <li><a href="../faq/index.html">❓ Частые вопросы </a></li>
+          <li><a href="../contact/index.html">📞 Контакты</a></li>
         </ul>
 
           <div class="nav-contacts">
-            📞 <a href="tel:+79991234567">+7 (961) 137‑13‑31</a> &nbsp; 📧
+            📞 <a href="tel:+79611371331">+7 (961) 137‑13‑31</a> &nbsp; 📧
             <a href="mailto:info@smolmaf.ru">info@smolmaf.ru</a>
           </div>
         </nav>

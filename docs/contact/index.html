@@ -1,38 +1,20 @@
----
-layout: default
-title: Контакты SMOLMAF | Связаться с нами
-description: Свяжитесь с SMOLMAF — мы ответим на все вопросы по производству и заказу МАФ и металлоконструкций. Работаем по всей России.
-keywords: контакты, SMOLMAF, обратная связь, телефон, email, адрес, заказать, производство
-permalink: /contact/
-canonical: https://smolmaf.ru/contact/
-author: SMOLMAF
-lang: ru
-robots: index, follow
-og_title: Контакты SMOLMAF
-og_description: Свяжитесь с нами для заказа МАФ, металлоконструкций, сварки и монтажа.
-og_image: https://smolmaf.ru/assets/img/contact-og.jpg
-og_url: https://smolmaf.ru/contact/
-og_type: article
-twitter_card: summary_large_image
-twitter_title: Контакты SMOLMAF
-twitter_description: Связь с SMOLMAF — производство, монтаж, дизайн. Работаем по всей России.
-twitter_image: https://smolmaf.ru/assets/img/contact-twitter.jpg
----
-
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>{{ page.title }}</title>
-    <meta name="description" content="{{ page.description }}" />
-    <meta name="keywords" content="{{ page.keywords }}" />
+    <title>Контакты SMOLMAF | Связаться с нами</title>
     <meta
-      name="robots"
-      content="{{ page.robots | default: 'index, follow' }}"
+      name="description"
+      content="Контактная информация SMOLMAF: адрес, телефон, email, форма обратной связи. Работаем по всей России."
     />
-    <link rel="canonical" href="{{ page.canonical }}" />
+    <meta
+      name="keywords"
+      content="контакты, SMOLMAF, телефон, email, обратная связь, адрес"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://smolmaf.ru/contacts/" />
 
     <link
       rel="icon"
@@ -43,77 +25,19 @@ twitter_image: https://smolmaf.ru/assets/img/contact-twitter.jpg
     <link rel="stylesheet" href="contact-style.css" />
 
     <!-- Open Graph -->
-    <meta
-      property="og:title"
-      content="{{ page.og_title | default: page.title }}"
-    />
+    <meta property="og:title" content="Контакты SMOLMAF — Связь и поддержка" />
     <meta
       property="og:description"
-      content="{{ page.og_description | default: page.description }}"
+      content="Свяжитесь с нами: адрес, телефон, email. Работаем по всей России."
     />
-    <meta
-      property="og:image"
-      content="{{ page.og_image | default: page.image }}"
-    />
-    <meta
-      property="og:url"
-      content="{{ page.og_url | default: page.canonical }}"
-    />
-    <meta
-      property="og:type"
-      content="{{ page.og_type | default: 'website' }}"
-    />
-    <!-- Twitter Card -->
-    <meta
-      name="twitter:card"
-      content="{{ page.twitter_card | default: 'summary_large_image' }}"
-    />
-    <meta
-      name="twitter:title"
-      content="{{ page.twitter_title | default: page.title }}"
-    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Контакты SMOLMAF — Связь и поддержка" />
     <meta
       name="twitter:description"
-      content="{{ page.twitter_description | default: page.description }}"
+      content="Адрес, телефон, email — свяжитесь с SMOLMAF."
     />
-    <meta
-      name="twitter:image"
-      content="{{ page.twitter_image | default: page.image }}"
-    />
+    <meta name="twitter:image" content="https://smolmaf.ru/image/1.jpg" />
 
-    <!-- Language & Author -->
-    <meta name="author" content="{{ page.author | default: 'SMOLMAF' }}" />
-    <meta
-      http-equiv="Content-Language"
-      content="{{ page.lang | default: 'ru' }}"
-    />
-
-    <!-- Structured Data (JSON-LD) -->
-    {% if page.json_ld %}
-    <script type="application/ld+json">
-      {{ page.json_ld | jsonify }}
-    </script>
-    {% endif %}
-
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Smolmaf",
-        "url": "https://smolmaf.ru",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+7-999-123-45-67",
-          "email": "info@smolmaf.ru",
-          "contactType": "Customer Service"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "RU"
-        }
-      }
-    </script>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
       (function (m, e, t, r, i, k, a) {
@@ -169,26 +93,26 @@ twitter_image: https://smolmaf.ru/assets/img/contact-twitter.jpg
         <!-- эффект свечения, если нужен -->
         <nav class="top-navbar">
           <ul class="nav-links">
-            <li><a href="index.html">🏠 Главная</a></li>
-            <li><a href="services/index.html">🛠 Услуги</a></li>
-            <li><a href="cooperation/index.html">🤝 Сотрудничество</a></li>
+            <li><a href="../index.html">🏠 Главная</a></li>
+            <li><a href="../services/index.html">🛠 Услуги</a></li>
+            <li><a href="../cooperation/index.html">🤝 Сотрудничество</a></li>
             <li class="dropdown">
               <a href="#">🛒 Товары ▾</a>
               <ul class="dropdown-menu">
-                <li><a href="mafs/index.html">🪑 Скамейки</a></li>
-                <li><a href="bins/index.html">🗑 Контейнеры / Урны</a></li>
-                <li><a href="fences/index.html">🚧 Ограждения</a></li>
-                <li><a href="metal/index.html">🏗 Металлоконструкции</a></li>
-                <li><a href="loft/index.html">🏙 Лофт стиль</a></li>
+                <li><a href="../mafs/index.html">🪑 Скамейки</a></li>
+                <li><a href="../bins/index.html">🗑 Контейнеры / Урны</a></li>
+                <li><a href="../fences/index.html">🚧 Ограждения</a></li>
+                <li><a href="../metal/index.html">🏗 Металлоконструкции</a></li>
+                <li><a href="../loft/index.html">🏙 Лофт стиль</a></li>
               </ul>
             </li>
-            <li><a href="/about/">📌 О нас</a></li>
-            <li><a href="/faq/">❓ Частые вопросы </a></li>
-            <li><a href="/contact/">📞 Контакты</a></li>
+            <li><a href="../about/index.html">📌 О нас</a></li>
+            <li><a href="../faq/index.html">❓ Частые вопросы </a></li>
+            <li><a href="../contact/index.html">📞 Контакты</a></li>
           </ul>
 
           <div class="nav-contacts">
-            📞 <a href="tel:+79991234567">+7 (961) 137‑13‑31</a> &nbsp; 📧
+            📞 <a href="tel:+79611371331">+7 (961) 137‑13‑31</a> &nbsp; 📧
             <a href="mailto:info@smolmaf.ru">info@smolmaf.ru</a>
           </div>
         </nav>
