@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>smolmaf.ru — скоро вернёмся</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Orbitron", sans-serif;
+        background: #0d0d0d;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      h1 {
+        font-size: 3em;
+        position: relative;
+        color: #fff;
+        animation: glitch 1s infinite;
+        margin-bottom: 0.5em;
+      }
+
+      @keyframes glitch {
+        0% {
+          text-shadow: 2px 0 red, -2px 0 blue;
+        }
+        20% {
+          text-shadow: -2px 0 red, 2px 0 blue;
+        }
+        40% {
+          text-shadow: 2px 2px red, -2px -2px blue;
+        }
+        60% {
+          text-shadow: -2px -2px red, 2px 2px blue;
+        }
+        80% {
+          text-shadow: 2px -2px red, -2px 2px blue;
+        }
+        100% {
+          text-shadow: 0 0 red, 0 0 blue;
+        }
+      }
+
+      p {
+        font-size: 1.2em;
+        max-width: 600px;
+        margin-bottom: 2em;
+        color: #ccc;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .buttons a {
+        text-decoration: none;
+        padding: 0.8em 1.5em;
+        background: #1f1f1f;
+        color: #00ffe7;
+        border: 2px solid #00ffe7;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .buttons a:hover {
+        background: #00ffe7;
+        color: #0d0d0d;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 20px;
+        font-size: 0.9em;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SMOLMAF.RU</h1>
+    <p>
+      Ведутся технические работы. Мы скоро вернёмся онлайн. Благодарим за
+      терпение!
+    </p>
+
+    <div class="buttons">
+      <a
+        href="https://chat.whatsapp.com/KIjz1LzFglzDJLW7EFCMtM?mode=ac_t"
+        class="whatsapp"
+        target="_blank"
+        >💬 WhatsApp</a
+      >
+      <a href="https://t.me/smolMAF" class="telegram" target="_blank"
+        >📩 Telegram</a
+      >
+    </div>
+
+    <footer><span id="date"></span> &copy; smolmaf.ru</footer>
+
+    <script>
+      const dateSpan = document.getElementById("date");
+      const now = new Date();
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      dateSpan.textContent = now.toLocaleDateString("ru-RU", options);
+    </script>
+  </body>
+</html>
