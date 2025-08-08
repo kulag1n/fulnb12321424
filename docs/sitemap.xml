@@ -1,23 +1,59 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://smolmaf.ru/index.html</loc></url>
-  <url><loc>https://smolmaf.ru/about.html</loc></url>
-  <url><loc>https://smolmaf.ru/contact.html</loc></url>
-  <url><loc>https://smolmaf.ru/faq.html</loc></url>
-  <url><loc>https://smolmaf.ru/services.html</loc></url>
-  <url><loc>https://smolmaf.ru/products.html</loc></url>
-  <url><loc>https://smolmaf.ru/cooperation.html</loc></url>
+
+  <url>
+    <loc>https://smolmaf.ru/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://smolmaf.ru/services/</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://smolmaf.ru/cooperation/</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://smolmaf.ru/about/</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://smolmaf.ru/contact/</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://smolmaf.ru/faq/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://smolmaf.ru/mafs/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://smolmaf.ru/bins/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://smolmaf.ru/fences/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://smolmaf.ru/metal/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://smolmaf.ru/loft/</loc>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://smolmaf.ru/index.html</loc></url>
-  <url><loc>https://smolmaf.ru/about.html</loc></url>
-  <url><loc>https://smolmaf.ru/contact.html</loc></url>
-  <url><loc>https://smolmaf.ru/faq.html</loc></url>
-  <url><loc>https://smolmaf.ru/services.html</loc></url>
-  <url><loc>https://smolmaf.ru/products.html</loc></url>
-  <url><loc>https://smolmaf.ru/cooperation.html</loc></url>
-</urlset>
->>>>>>> 3af916af26a78ae17eff28fa61ec09ee3b67cd82
