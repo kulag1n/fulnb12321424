@@ -1,9 +1,3 @@
-<<<<<<< HEAD
 User-agent: *
 Allow: /
 Sitemap: https://smolmaf.ru/sitemap.xml
-=======
-User-agent: *
-Allow: /
-Sitemap: https://smolmaf.ru/sitemap.xml
->>>>>>> 3af916af26a78ae17eff28fa61ec09ee3b67cd82
