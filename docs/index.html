@@ -229,22 +229,43 @@
 
     <!-- ✅ Затем подключаем наш скрипт -->
     <script src="scriptValidacia.js"></script>
+    <!--начало-->
+<script>
+  (function () {
+    const toggle = document.querySelector('.nav-toggle');
+    const drawer = document.getElementById('nav-drawer');
+    const backdrop = document.querySelector('.backdrop');
+    const body = document.body;
 
+    function openMenu() {
+      drawer.classList.add('open');
+      backdrop.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      drawer.classList.remove('open');
+      backdrop.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', () => {
+      const isOpen = drawer.classList.contains('open');
+      isOpen ? closeMenu() : openMenu();
+    });
+    backdrop.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+</script>
     <script>
       AOS.init();
     </script>
     <script src="script.js"></script>
     <script src="404.js"></script>
-    <script>
-  const toggleBtn = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  const navContacts = document.querySelector('.nav-contacts');
-
-  toggleBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    navContacts.classList.toggle('active');
-  });
-</script>
+  
 
   </body>
 </html>
