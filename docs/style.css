@@ -610,174 +610,90 @@ button.send-btn:hover {
   color: #a71515;
 }
 /* === Адаптация под планшеты и телефоны === */
-/* Кнопка-бургер по умолчанию скрыта */
-.nav-toggle {
-  display: none;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
+@media (max-width: 992px) {
+  .top-navbar {
+    flex-wrap: wrap;
+    padding: 0 15px;
+    height: auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-contacts {
+    font-size: 0.9rem;
+    margin-top: 8px;
+  }
+
+  .logo {
+    max-width: 300px;
+    height: auto;
+  }
 }
 
-/* Мобильная версия */
-/* Кнопка-бургер по умолчанию скрыта */
-.nav-toggle {
-  display: none;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
-/* App bar — компактная шапка */
-.appbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #7d0e0e; /* ваш бордовый */
-  color: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
 
-.appbar-row {
-  height: 56px;              /* ключ к компактности */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 12px;           /* уменьшенные отступы */
-  gap: 8px;
-}
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
 
-/* Логотип */
-.brand {
-  display: inline-flex;
-  align-items: center;
-  min-width: 0;
-}
-.brand-logo {
-  height: 28px;              /* фикс по высоте вместо автоширины */
-  width: auto;
-  display: block;
-}
+  h3 {
+    font-size: 1rem;
+  }
 
-/* Кнопка-бургер */
-.nav-toggle {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  color: inherit;
-}
-.nav-toggle-bar {
-  width: 22px;
-  height: 2px;
-  background: currentColor;
-  border-radius: 1px;
-  display: block;
-}
+  .hero-header {
+    height: auto;
+    padding: 40px 15px;
+    background-position: center;
+  }
 
-/* Иконки звонка/почты — компактно, без текста на мобайле */
-.appbar-actions {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.icon-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  background: rgba(255,255,255,0.08);
-}
-.icon-btn:hover { background: rgba(255,255,255,0.16); }
+  .overlay {
+    padding: 20px 10px;
+  }
 
-/* Выезжающее меню */
-.nav-drawer {
-  position: fixed;
-  inset: 0 auto 0 0;   /* слева */
-  width: 78%;
-  max-width: 360px;
-  transform: translateX(-100%);
-  transition: transform .25s ease;
-  background: #7d0e0e;
-  color: #fff;
-  z-index: 1001;
-  padding: 16px 12px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  overflow-y: auto;
-}
-.nav-drawer.open { transform: translateX(0); }
+  .btn, button, .messenger {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
 
-.nav-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 4px;
-}
-.nav-list a {
-  display: block;
-  padding: 12px 10px;
-  border-radius: 8px;
-  color: #fff;
-  text-decoration: none;
-  background: rgba(255,255,255,0.06);
-}
-.nav-list a:hover { background: rgba(255,255,255,0.14); }
-
-/* Затемнение фона */
-.backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 1000;
-}
-
-/* Снижаем риск “растягивания” из-за длинных строк */
-.appbar, .appbar * {
-  line-height: 1;         /* убираем высокий line-height */
-}
-.appbar a, .appbar button { white-space: nowrap; }
-
-/* Планшеты и выше — можно показать горизонтальное меню, если нужно */
-@media (min-width: 992px) {
-  .nav-toggle, .backdrop { display: none; }
-  .nav-drawer {
-    position: static;
-    transform: none;
-    width: auto;
-    max-width: none;
-    padding: 0 12px;
-    background: transparent;
+  .floating-panel {
     flex-direction: row;
-    align-items: center;
-    gap: 12px;
+    bottom: 10px;
+    right: 10px;
+    gap: 5px;
   }
-  .nav-list {
-    display: flex;
-    gap: 8px;
-  }
-  .nav-list a {
-    background: transparent;
-    padding: 10px 8px;
-  }
-  .appbar-row { height: 64px; }
 }
 
-/* Очень маленькие экраны — ещё плотнее */
-@media (max-width: 360px) {
-  .appbar-row { height: 52px; padding: 0 8px; }
-  .brand-logo { height: 24px; }
-  .icon-btn { width: 32px; height: 32px; }
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .nav-contacts {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .logo {
+    max-width: 200px;
+  }
+
+  .btn, button, .messenger {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
 }
