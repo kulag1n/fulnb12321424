@@ -762,7 +762,7 @@ button.send-btn:hover {
   }
 
   .dropdown.open > .dropdown-menu-mobile {
-    display: flex;
+    display: block;
   }
 
   .dropdown-menu-mobile li a {
