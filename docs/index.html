@@ -222,6 +222,29 @@
     <div id="custom-alert" class="custom-alert info">
       <p id="custom-alert-text">Ваше сообщение</p>
     </div>
+    <!--начало-->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const btn = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const navContacts = document.querySelector('.nav-contacts');
+
+  if (!btn || !navLinks) return;
+
+  btn.addEventListener('click', function(){
+    navLinks.classList.toggle('active');
+    if (navContacts) navContacts.classList.toggle('active');
+    btn.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function(e){
+    if (e.target.closest('.nav-links') || e.target.closest('.nav-toggle') || e.target.closest('.nav-contacts')) return;
+    navLinks.classList.remove('active');
+    if (navContacts) navContacts.classList.remove('active');
+    btn.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
 
     <!-- ✅ Подключаем маску -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js"></script>
