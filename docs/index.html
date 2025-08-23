@@ -229,30 +229,7 @@
 
     <!-- ✅ Затем подключаем наш скрипт -->
     <script src="scriptValidacia.js"></script>
-    <!--начало-->
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  const btn = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  const navContacts = document.querySelector('.nav-contacts');
 
-  if (!btn || !navLinks) return;
-
-  // Открытие/закрытие по клику на бургер
-  btn.addEventListener('click', function(){
-    navLinks.classList.toggle('active');
-    if (navContacts) navContacts.classList.toggle('active');
-    btn.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'true' : 'false');
-  });
-
-  // Закрытие по клику вне меню
-  document.addEventListener('click', function(e){
-    if (e.target.closest('.nav-links') || e.target.closest('.nav-toggle') || e.target.closest('.nav-contacts')) return;
-    navLinks.classList.remove('active');
-    if (navContacts) navContacts.classList.remove('active');
-    btn.setAttribute('aria-expanded', 'false');
-  });
-});
 </script>
 
     <script>
