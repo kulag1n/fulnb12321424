@@ -621,44 +621,163 @@ button.send-btn:hover {
 }
 
 /* Мобильная версия */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-    margin-right: 10px;
-  }
+/* Кнопка-бургер по умолчанию скрыта */
+.nav-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+/* App bar — компактная шапка */
+.appbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #7d0e0e; /* ваш бордовый */
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
 
-  .top-navbar {
-    display: flex;
+.appbar-row {
+  height: 56px;              /* ключ к компактности */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;           /* уменьшенные отступы */
+  gap: 8px;
+}
+
+/* Логотип */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+.brand-logo {
+  height: 28px;              /* фикс по высоте вместо автоширины */
+  width: auto;
+  display: block;
+}
+
+/* Кнопка-бургер */
+.nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
+}
+.nav-toggle-bar {
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  display: block;
+}
+
+/* Иконки звонка/почты — компактно, без текста на мобайле */
+.appbar-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+.icon-btn:hover { background: rgba(255,255,255,0.16); }
+
+/* Выезжающее меню */
+.nav-drawer {
+  position: fixed;
+  inset: 0 auto 0 0;   /* слева */
+  width: 78%;
+  max-width: 360px;
+  transform: translateX(-100%);
+  transition: transform .25s ease;
+  background: #7d0e0e;
+  color: #fff;
+  z-index: 1001;
+  padding: 16px 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+}
+.nav-drawer.open { transform: translateX(0); }
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.nav-list a {
+  display: block;
+  padding: 12px 10px;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255,255,255,0.06);
+}
+.nav-list a:hover { background: rgba(255,255,255,0.14); }
+
+/* Затемнение фона */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+
+/* Снижаем риск “растягивания” из-за длинных строк */
+.appbar, .appbar * {
+  line-height: 1;         /* убираем высокий line-height */
+}
+.appbar a, .appbar button { white-space: nowrap; }
+
+/* Планшеты и выше — можно показать горизонтальное меню, если нужно */
+@media (min-width: 992px) {
+  .nav-toggle, .backdrop { display: none; }
+  .nav-drawer {
+    position: static;
+    transform: none;
+    width: auto;
+    max-width: none;
+    padding: 0 12px;
+    background: transparent;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    position: relative;
+    gap: 12px;
   }
-
-  .nav-links,
-  .nav-contacts {
-    display: none;
-    flex-direction: column;
-    background: #7d0e0e;
-    position: absolute;
-    top: 56px;
-    left: 0;
-    right: 0;
-    padding: 10px 0;
-    z-index: 999;
-  }
-
-  .nav-links.active,
-  .nav-contacts.active {
+  .nav-list {
     display: flex;
+    gap: 8px;
   }
+  .nav-list a {
+    background: transparent;
+    padding: 10px 8px;
+  }
+  .appbar-row { height: 64px; }
+}
 
-  .nav-links li {
-    text-align: center;
-    padding: 8px 0;
-  }
-
-  .nav-contacts {
-    padding: 10px;
-    text-align: center;
-  }
+/* Очень маленькие экраны — ещё плотнее */
+@media (max-width: 360px) {
+  .appbar-row { height: 52px; padding: 0 8px; }
+  .brand-logo { height: 24px; }
+  .icon-btn { width: 32px; height: 32px; }
 }
