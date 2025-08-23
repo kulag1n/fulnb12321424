@@ -609,3 +609,18 @@ button.send-btn:hover {
 .btn open-form-btn {
   color: #a71515;
 }
+@media (max-width: 768px) {
+  .nav-links,
+  .nav-contacts {
+    display: none;
+    flex-direction: column;
+    background: inherit; /* сохраняем твой фон */
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .nav-links.active,
+  .nav-contacts.active {
+    display: flex;
+  }
+}
