@@ -609,3 +609,13 @@ button.send-btn:hover {
 .btn open-form-btn {
   color: #a71515;
 }
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-text {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
