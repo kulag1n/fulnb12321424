@@ -656,3 +656,16 @@ button.send-btn:hover {
     display: none;
   }
 }
+.hero-header .overlay {
+  display: flex;
+  flex-direction: column;   /* чтобы текст шёл под картинкой */
+  align-items: center;      /* центр по горизонтали */
+  justify-content: center;  /* центр по вертикали */
+  min-height: 60vh;         /* высота блока */
+  text-align: center;
+}
+
+.hero-header .logo {
+  max-width: 100%;
+  height: auto;
+}
