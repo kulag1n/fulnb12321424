@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ф<!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -236,14 +236,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const toggleBtn = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
 
-  // Открытие/закрытие меню по бургеру
+  // Бургер
   if (toggleBtn && navLinks) {
     toggleBtn.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
   }
 
-  // Открытие/закрытие подменю на мобильных
+  // Подменю
   document.querySelectorAll('.dropdown > a').forEach(link => {
     link.addEventListener('click', function(e) {
       if (window.innerWidth <= 768) {
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const parent = this.parentElement;
 
-        // Если уже открыто — закрываем
+        // Если уже открыто — закрываем и выходим
         if (parent.classList.contains('open')) {
           parent.classList.remove('open');
           return;
@@ -278,7 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-
 
     <script>
       AOS.init();
