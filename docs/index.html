@@ -9,7 +9,7 @@
     </title>
     <meta
       name="description"
-      content="SMOLMAF — производитель малых архитектурных форм, уличной мебели, ограждений и металлоконструкций. Эстетика городской среды, ГОСТ, доставка по всей России."
+      content="СмолМАФ — производитель малых архитектурных форм, уличной мебели, ограждений и металлоконструкций. Эстетика городской среды, ГОСТ, доставка по всей России."
     />
     <meta
       name="keywords"
@@ -231,34 +231,25 @@
     <script src="scriptValidacia.js"></script>
     <!--начало-->
 <script>
-  (function () {
-    const toggle = document.querySelector('.nav-toggle');
-    const drawer = document.getElementById('nav-drawer');
-    const backdrop = document.querySelector('.backdrop');
-    const body = document.body;
+  document.addEventListener('DOMContentLoaded', function(){
+    const btn = document.querySelector('.nav-toggle');
+    const panel = document.getElementById('nav-panel');
 
-    function openMenu() {
-      drawer.classList.add('open');
-      backdrop.hidden = false;
-      toggle.setAttribute('aria-expanded', 'true');
-      body.style.overflow = 'hidden';
-    }
-    function closeMenu() {
-      drawer.classList.remove('open');
-      backdrop.hidden = true;
-      toggle.setAttribute('aria-expanded', 'false');
-      body.style.overflow = '';
-    }
+    if (!btn || !panel) return;
 
-    toggle.addEventListener('click', () => {
-      const isOpen = drawer.classList.contains('open');
-      isOpen ? closeMenu() : openMenu();
+    btn.addEventListener('click', function(){
+      const open = document.body.classList.toggle('nav-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    backdrop.addEventListener('click', closeMenu);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
+
+    // Закрытие по клику вне
+    document.addEventListener('click', function(e){
+      if (!document.body.classList.contains('nav-open')) return;
+      if (e.target.closest('.nav-panel') || e.target.closest('.nav-toggle')) return;
+      document.body.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
     });
-  })();
+  });
 </script>
     <script>
       AOS.init();
