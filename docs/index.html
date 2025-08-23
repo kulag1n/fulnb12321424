@@ -231,40 +231,50 @@
 
     <!-- ✅ Затем подключаем наш скрипт -->
     <script src="scriptValidacia.js"></script>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const toggleBtn = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
-  const navContacts = document.querySelector('.nav-contacts');
 
-  // Логика бургера
-  if (toggleBtn) {
+  // Открытие/закрытие бургера
+  if (toggleBtn && navLinks) {
     toggleBtn.addEventListener('click', () => {
-      navLinks?.classList.toggle('active');
-      navContacts?.classList.toggle('active');
+      navLinks.classList.toggle('active');
     });
   }
 
-  // Логика открытия/закрытия подменю на мобильных
+  // Открытие/закрытие подменю на мобильных
   document.querySelectorAll('.dropdown > a').forEach(link => {
     link.addEventListener('click', function(e) {
       if (window.innerWidth <= 768) {
-        e.preventDefault(); // отключаем переход по ссылке
+        e.preventDefault();
 
         const parent = this.parentElement;
 
-        // Закрыть все остальные открытые подменю
+        // Если уже открыто — закрываем
+        if (parent.classList.contains('open')) {
+          parent.classList.remove('open');
+          return;
+        }
+
+        // Закрыть все остальные
         document.querySelectorAll('.dropdown.open').forEach(drop => {
-          if (drop !== parent) {
-            drop.classList.remove('open');
-          }
+          drop.classList.remove('open');
         });
 
-        // Переключить текущее подменю
-        parent.classList.toggle('open');
+        // Открыть текущее
+        parent.classList.add('open');
       }
     });
+  });
+
+  // Закрытие подменю при клике вне
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown.open').forEach(drop => {
+        drop.classList.remove('open');
+      });
+    }
   });
 });
 </script>
