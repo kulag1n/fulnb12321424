@@ -610,6 +610,15 @@ button.send-btn:hover {
   color: #a71515;
 }
 /* === Адаптация под планшеты и телефоны === */
+/* Кнопка-бургер по умолчанию скрыта */
+.nav-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #4b3400;
+  cursor: pointer;
+}
 @media (max-width: 992px) {
   .top-navbar {
     flex-wrap: wrap;
