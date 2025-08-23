@@ -142,7 +142,7 @@
     <li><a href="cooperation/">🤝 Сотрудничество</a></li>
     <li class="dropdown">
       <a href="#">🛒 Товары ▾</a>
-      <ul class="dropdown-menu">
+       <ul class="dropdown-menu dropdown-menu-mobile">
         <li><a href="block/">🏙 Блок- контейнер | Бытовка</a></li>
         <li><a href="mafs/">🪑 Скамейки</a></li>
         <li><a href="bins/">🗑 Контейнеры / Урны</a></li>
@@ -232,6 +232,41 @@
     <!-- ✅ Затем подключаем наш скрипт -->
     <script src="scriptValidacia.js"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleBtn = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const navContacts = document.querySelector('.nav-contacts');
+
+  // Логика бургера
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      navLinks?.classList.toggle('active');
+      navContacts?.classList.toggle('active');
+    });
+  }
+
+  // Логика открытия/закрытия подменю на мобильных
+  document.querySelectorAll('.dropdown > a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault(); // отключаем переход по ссылке
+
+        const parent = this.parentElement;
+
+        // Закрыть все остальные открытые подменю
+        document.querySelectorAll('.dropdown.open').forEach(drop => {
+          if (drop !== parent) {
+            drop.classList.remove('open');
+          }
+        });
+
+        // Переключить текущее подменю
+        parent.classList.toggle('open');
+      }
+    });
+  });
+});
 </script>
 
     <script>
