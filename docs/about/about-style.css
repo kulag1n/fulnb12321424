@@ -534,3 +534,9 @@ button:hover,
     text-decoration: none;
   }
 }
+.dropdown-menu {
+  display: none;
+}
+.dropdown.open > .dropdown-menu {
+  display: block;
+}
