@@ -1,40 +1,47 @@
 document.addEventListener('DOMContentLoaded', function() {
   const toggleBtn = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  const navContainers = document.querySelectorAll('.nav-links');
 
   // Бургер
   toggleBtn?.addEventListener('click', () => {
-    navLinks?.classList.toggle('active');
+    // Если контейнеров несколько, активируешь нужный визуально (обычно один)
+    navContainers.forEach(c => c.classList.toggle('active'));
   });
 
-  // Делегирование кликов по подменю
-  navLinks?.addEventListener('click', function(e) {
-    const link = e.target.closest('.dropdown > a');
-    if (!link) return;
+  // Делегирование кликов по каждому контейнеру меню
+  navContainers.forEach(container => {
+    container.addEventListener('click', function(e) {
+      const link = e.target.closest('li.dropdown > a');
+      if (!link || !container.contains(link)) return;
 
-    const isHash = link.getAttribute('href') === '#';
-    if (isHash || window.innerWidth <= 1024) {
+      // Всегда предотвращаем навигацию для пунктов с подменю
       e.preventDefault();
-    }
 
-    const li = link.parentElement;
+      const item = link.closest('li.dropdown');
 
-    // Закрываем соседей
-    Array.from(li.parentElement.children).forEach(sibling => {
-      if (sibling !== li) {
-        sibling.classList.remove('open');
-      }
+      // Закрываем других соседей только в этом контейнере
+      container.querySelectorAll('li.dropdown.open').forEach(el => {
+        if (el !== item) el.classList.remove('open');
+      });
+
+      // Переключаем текущее
+      item.classList.toggle('open');
     });
-
-    // Просто переключаем текущее
-    li.classList.toggle('open');
   });
 
-  // Клик вне меню
+  // Клик вне любого меню — закрыть всё
   document.addEventListener('click', function(e) {
-    if (!e.target.closest('.dropdown')) {
-      document.querySelectorAll('.dropdown.open').forEach(li => li.classList.remove('open'));
+    if (!e.target.closest('.nav-links')) {
+      document.querySelectorAll('li.dropdown.open').forEach(el => el.classList.remove('open'));
+    }
+  });
+
+  // Опционально: при ресайзе убираем мобильное состояние
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+      document.querySelectorAll('.nav-links.active').forEach(c => c.classList.remove('active'));
     }
   });
 });
+
 
