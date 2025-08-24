@@ -498,7 +498,7 @@ button:hover,
 
   .nav-links.active,
   .nav-contacts.active {
-    display: block;
+    display: flex;
   }
 
   .nav-links li {
@@ -534,57 +534,3 @@ button:hover,
     text-decoration: none;
   }
 }
-/* Скрытое меню */
-.nav-links {
-  display: none;
-  position: absolute;
-  top: 50px;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  transform: translateY(-20px);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-/* Активное меню */
-.nav-links.active {
-  display: block;
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Пункты меню изначально скрыты */
-.nav-links li {
-  opacity: 0;
-}
-
-/* При активном меню — разрешаем анимацию появления */
-.nav-links.active li {
-  opacity: 1;
-}
-
-/* Анимация появления пунктов */
-@keyframes menuFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Эффект на кнопку бургер */
-.nav-toggle {
-  transition: transform 0.2s ease;
-}
-
-.nav-toggle:active {
-  transform: scale(1.1);
-}
-
