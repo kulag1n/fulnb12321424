@@ -485,6 +485,19 @@ body {
     right: 10px;
     gap: 5px;
   }
+
+  /* Адаптация сетки карточек */
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .card {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 @media (max-width: 480px) {
@@ -512,6 +525,7 @@ body {
     font-size: 0.9rem;
   }
 }
+
 /* Кнопка-бургер по умолчанию скрыта */
 .nav-toggle {
   display: none;
@@ -522,7 +536,7 @@ body {
   cursor: pointer;
 }
 
-/* Мобильная версия */
+/* Мобильная версия меню */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
@@ -564,6 +578,8 @@ body {
     text-align: center;
   }
 }
+
+/* Подменю на мобильных */
 @media (max-width: 768px) {
   .dropdown-menu-mobile {
     all: unset; /* сбросить лишние стили */
