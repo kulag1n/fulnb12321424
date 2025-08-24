@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
   const toggleBtn = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
+  const navContacts = document.querySelector('.nav-contacts');
 
-  // Бургер — показывает/скрывает общий список ссылок
+  // Бургер — показывает/скрывает меню и контакты
   toggleBtn?.addEventListener('click', () => {
     navLinks?.classList.toggle('active');
+    navContacts?.classList.toggle('active');
   });
 
   // Делегирование кликов по пунктам с подменю
