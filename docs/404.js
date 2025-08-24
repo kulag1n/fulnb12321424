@@ -1,4 +1,4 @@
-<script>
+
 (function () {
   // Перенаправление при ошибке загрузки ресурсов
   window.addEventListener('error', function (e) {
@@ -28,4 +28,4 @@
   // Запуск проверки API через 3 секунды
   setTimeout(checkAPI, 3000);
 })();
-</script>
+
