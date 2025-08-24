@@ -534,3 +534,49 @@ button:hover,
     text-decoration: none;
   }
 }
+/* Скрытое меню */
+.nav-links {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Активное меню */
+.nav-links.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Анимация появления пунктов */
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Пункты меню изначально скрыты */
+.nav-links li {
+  opacity: 0;
+}
+
+/* Эффект на кнопку бургер */
+.nav-toggle {
+  transition: transform 0.2s ease;
+}
+
+.nav-toggle:active {
+  transform: scale(1.1);
+}
