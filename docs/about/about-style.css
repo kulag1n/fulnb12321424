@@ -534,3 +534,9 @@ button:hover,
     text-decoration: none;
   }
 }
+.nav-links { display: none; }
+.nav-links.active { display: block; }
+
+.nav-contacts { display: none; }
+.nav-contacts.active { display: block; }
+
