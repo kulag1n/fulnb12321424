@@ -389,3 +389,166 @@ body {
 .faq-q {
   font-size: 1.4em;
 }
+/* === Адаптация под планшеты и телефоны === */
+@media (max-width: 992px) {
+  .top-navbar {
+    flex-wrap: wrap;
+    padding: 0 15px;
+    height: auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-contacts {
+    font-size: 0.9rem;
+    margin-top: 8px;
+  }
+
+  .logo {
+    max-width: 300px;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .hero-header {
+    height: auto;
+    padding: 40px 15px;
+    background-position: center;
+  }
+
+  .overlay {
+    padding: 20px 10px;
+  }
+
+  .btn, button, .messenger {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .floating-panel {
+    flex-direction: row;
+    bottom: 10px;
+    right: 10px;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .nav-contacts {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .logo {
+    max-width: 200px;
+  }
+
+  .btn, button, .messenger {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+/* Кнопка-бургер по умолчанию скрыта */
+.nav-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    margin-right: 10px;
+  }
+
+  .top-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .nav-links,
+  .nav-contacts {
+    display: none;
+    flex-direction: column;
+    background: #7d0e0e;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+    z-index: 999;
+  }
+
+  .nav-links.active,
+  .nav-contacts.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  .nav-contacts {
+    padding: 10px;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .dropdown-menu-mobile {
+    all: unset; /* сбросить лишние стили */
+    display: none;
+    list-style: none;
+    background: #fff8e1;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .dropdown.open > .dropdown-menu-mobile {
+    display: block;
+  }
+
+  .dropdown-menu-mobile li a {
+    display: block;
+    padding: 10px 16px;
+    color: #4b3400;
+    text-decoration: none;
+  }
+}
