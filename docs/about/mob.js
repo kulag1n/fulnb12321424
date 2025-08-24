@@ -1,11 +1,24 @@
-
 document.addEventListener('DOMContentLoaded', function() {
   const toggleBtn = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
+  const navContacts = document.querySelector('.nav-contacts');
 
-  // Бургер — показывает/скрывает общий список ссылок
+  // Бургер — показывает/скрывает меню и контакты + анимация пунктов
   toggleBtn?.addEventListener('click', () => {
     navLinks?.classList.toggle('active');
+    navContacts?.classList.toggle('active');
+
+    // Анимация появления пунктов меню по очереди
+    const links = navLinks?.querySelectorAll('li');
+    if (links) {
+      links.forEach((link, index) => {
+        if (navLinks.classList.contains('active')) {
+          link.style.animation = `menuFadeIn 0.4s ease forwards ${index / 10 + 0.1}s`;
+        } else {
+          link.style.animation = '';
+        }
+      });
+    }
   });
 
   // Делегирование кликов по пунктам с подменю
@@ -32,6 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Тогглим текущее
     li.classList.toggle('open', !isOpen);
   });
+
+  // Клик вне dropdown — закрывает подменю
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown.open').forEach(li => li.classList.remove('open'));
+    }
+  });
+});
 
   // Клик вне dropdown — закрывает подменю
   document.addEventListener('click', function(e) {
