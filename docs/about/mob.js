@@ -1,4 +1,4 @@
-<script>
+
 document.addEventListener('DOMContentLoaded', function() {
   const toggleBtn = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -40,4 +40,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-</script>
+
