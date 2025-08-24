@@ -603,3 +603,8 @@ body {
     text-decoration: none;
   }
 }
+@media (max-width: 768px) {
+  .nav-contacts {
+    display: none;
+  }
+}
