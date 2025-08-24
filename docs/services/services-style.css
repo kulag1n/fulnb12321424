@@ -608,3 +608,26 @@ body {
     display: none;
   }
 }
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 50px; /* отступ под кнопку меню */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links li {
+    display: block;
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-contacts {
+    background: #f9f9f9;
+    padding: 10px;
+    text-align: center;
+  }
+}
