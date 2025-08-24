@@ -92,7 +92,7 @@ h3 {
 /* Меню навигации слева */
 .nav-links {
   list-style: none;
-  display: none;
+  display: flex;
   gap: 22px;
   margin: 0;
   padding: 0;
@@ -536,6 +536,7 @@ button:hover,
 }
 /* Скрытое меню */
 .nav-links {
+  display: none;
   position: absolute;
   top: 50px;
   left: 0;
@@ -550,6 +551,7 @@ button:hover,
 
 /* Активное меню */
 .nav-links.active {
+  display: block;
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
