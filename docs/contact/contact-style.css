@@ -575,7 +575,7 @@ footer {
   .nav-contacts {
     display: none;
     flex-direction: column;
-    background: #7d0e0e;
+    background: linear-gradient(90deg, #ffe082, #ffb300); /* фирменный золотистый */
     position: absolute;
     top: 56px;
     left: 0;
@@ -604,7 +604,7 @@ footer {
     all: unset; /* сбросить лишние стили */
     display: none;
     list-style: none;
-    background: #fff8e1;
+    background: linear-gradient(90deg, #ffe082, #ffb300); /* фирменный золотистый */
     padding: 0;
     margin: 0;
     flex-direction: column;
