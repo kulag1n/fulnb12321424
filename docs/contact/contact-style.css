@@ -4,7 +4,7 @@ body {
   background-color: #ffffff;
   color: #333;
   margin: 0;
-  padding-top: 52px; /* Высота навигационной панели */
+  padding-top: 52px;
 }
 
 /* === ЗАГОЛОВКИ === */
@@ -28,58 +28,17 @@ h3 {
   top: 0;
   left: 0;
   right: 0;
-  height: 52px; /* Обязательно указываем, чтобы glow стал видимым */
-  z-index: 1000; /* Чтобы навигация была поверх остальных блоков */
-}
-
-/* === НАВИГАЦИОННАЯ ПАНЕЛЬ (.top-navbar) === */
-.top-navbar {
-  position: relative; /* 👈 чтобы .nav-glow не перекрывала */
   height: 52px;
-  background: linear-gradient(90deg, #ffe082, #ffb300);
-  padding: 0 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1; /* Поверх .nav-glow */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
-.nav-glow {
-  position: absolute;
-  bottom: 0; /* Свечение снизу под панелью */
-  left: 0;
-  width: 100%;
-  height: 18px; /* Высота свечения */
-  pointer-events: none; /* Чтобы не мешать клику по меню */
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 193, 77, 0.4) 0%,
-    transparent 70%
-  );
-  animation: glow 5s infinite ease-in-out;
-  z-index: 0; /* Glow под навигацией */
-}
-
-/* === Анимация свечения === */
-@keyframes glow {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.05);
-  }
-}
-
+/* === НАВИГАЦИОННАЯ ПАНЕЛЬ === */
 .top-navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 52px; /* Компактная высота */
+  height: 52px;
   background: linear-gradient(90deg, #ffe082, #ffb300);
   padding: 0 28px;
   display: flex;
@@ -89,7 +48,28 @@ h3 {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Меню навигации слева */
+.nav-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 193, 77, 0.4) 0%,
+    transparent 70%
+  );
+  animation: glow 5s infinite ease-in-out;
+  z-index: 0;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+/* === МЕНЮ === */
 .nav-links {
   list-style: none;
   display: flex;
@@ -97,28 +77,24 @@ h3 {
   margin: 0;
   padding: 0;
 }
-.nav-links li {
-  position: relative;
-}
+.nav-links li { position: relative; }
 .nav-links a {
-  text-decoration: none; /* ❌ убираем подчёркивание */
-  border-bottom: none; /* ❌ если вдруг используется граница снизу */
+  text-decoration: none;
   color: #4b3400;
   font-weight: 500;
   font-size: 17px;
   padding: 6px 10px;
   border-radius: 6px;
-  display: inline-block; /* ✅ чтобы transform: scale работал */
+  display: inline-block;
   transition: transform 0.2s ease, background 0.3s ease, color 0.3s ease;
 }
-
 .nav-links a:hover {
   transform: scale(1.08);
   background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
 }
 
-/* Контактные данные справа */
+/* === КОНТАКТЫ В МЕНЮ === */
 .nav-contacts {
   font-size: 17px;
   font-weight: 500;
@@ -137,7 +113,7 @@ h3 {
   text-decoration: underline;
 }
 
-/* === ВЫПАДАЮЩЕЕ МЕНЮ "ТОВАРЫ" === */
+/* === ВЫПАДАЮЩЕЕ МЕНЮ === */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -168,10 +144,8 @@ h3 {
   color: #ffffff;
 }
 
-/* === СТИЛЬ КНОПОК В ОСНОВНОМ СОСТОЯНИИ === */
-.btn,
-button,
-.messenger {
+/* === КНОПКИ === */
+.btn, button, .messenger {
   padding: 12px 24px;
   border-radius: 15px;
   color: #4b3400;
@@ -180,250 +154,70 @@ button,
   border: none;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
-  background: linear-gradient(
-    90deg,
-    #ffe082,
-    #ffb300
-  ); /* ✅ жёлто-оранжевый градиент */
+  background: linear-gradient(90deg, #ffe082, #ffb300);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
-/* === ЭФФЕКТ ПРИ НАВЕДЕНИИ: УВЕЛИЧЕНИЕ И СИЯНИЕ === */
-.btn:hover,
-button:hover,
-.messenger:hover {
-  background: linear-gradient(
-    90deg,
-    #ffd54f,
-    #ffa500
-  ); /* более светлый оттенок */
-  transform: scale(1.08); /* ✅ увеличиваем кнопку */
-  box-shadow: 0 0 12px rgba(255, 193, 77, 0.6); /* мягкое сияние */
+.btn:hover, button:hover, .messenger:hover {
+  background: linear-gradient(90deg, #ffd54f, #ffa500);
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(255, 193, 77, 0.6);
   color: #ffffff;
 }
-/* === КНОПКИ МЕССЕНДЖЕРОВ === */
-.messenger-buttons a {
-  display: inline-block; /* 👈 нужно для transform */
-  padding: 12px 24px;
-  border-radius: 15px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #fff;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
 
-/* ✅ WhatsApp кнопка */
-.whatsapp {
-  background-color: #25d366;
-}
-
-/* ✅ Telegram кнопка */
-.telegram {
-  background-color: #0088cc;
-}
-
-/* === ЭФФЕКТ НАВЕДЕНИЯ НА КНОПКУ === */
-.whatsapp:hover,
-.telegram:hover {
-  transform: scale(1.08); /* 🔍 увеличение */
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); /* 💡 подсветка */
-}
-
-/* === ПЛАВАЮЩАЯ ПАНЕЛЬ СБОКУ === */
+/* === ПЛАВАЮЩИЕ КНОПКИ === */
 .floating-panel {
   position: fixed;
-  bottom: 0px; /* 🔽 ровно по нижнему краю */
-  right: 0px; /* 🔽 ровно по правому краю */
+  bottom: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   z-index: 9999;
-  margin: 0; /* ⛔️ никаких отступов */
-  padding: 0;
-  gap: 3px; /* 🟢 расстояние между кнопками */
+  gap: 3px;
 }
-
 .floating-panel a {
   display: block;
   padding: 10px 20px;
-  margin: 0;
   font-size: 14px;
   font-weight: bold;
-  text-decoration: none;
-  border: none;
-  border-radius: 15px; /* 🎯 никаких скруглений, ровно по краю */
+  border-radius: 15px;
   color: #ffffff;
-  box-shadow: none;
   background-color: #333;
   transition: transform 0.2s ease;
 }
-
-/* 🟢 Зеленая кнопка WhatsApp */
-.floating-panel .whatsapp {
-  background-color: #25d366;
-}
-
-/* 🔵 Синяя кнопка Telegram */
-.floating-panel .telegram {
-  background-color: #0088cc;
-}
-
-/* 💡 Эффект при наведении */
 .floating-panel a:hover {
   transform: scale(1.08);
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
 }
 
-/* === Анимация свечения === */
-@keyframes glow {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.05);
-  }
-}
-/* 🌟 Общие стили */
-body {
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #fef9f0, #fffdf7);
-  font-family: "Segoe UI", "Montserrat", sans-serif;
-  color: #2a2a2a;
-}
-
-/* Заголовки */
-h1,
-h2 {
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 0.5em;
-}
-
-h1 {
-  font-size: 3em;
-  color: #d48b00;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-h2 {
-  font-size: 2.2em;
-  color: #d48b00;
-}
-
-/* 📞 Блок контактов */
-.contact-block {
+/* === КОНТАКТЫ / КАРТА / РЕКВИЗИТЫ === */
+.contact-block,
+.map-block,
+.bank-block,
+.download-block {
   max-width: 1000px;
   margin: 3em auto;
-  padding: 2em 2em 3em;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(6px);
+  padding: 2em;
+  background: #fffef9;
   border-radius: 16px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-  animation: fadeIn 0.6s ease-out;
 }
 
-.contact-info p {
-  font-size: 1.2em;
-  line-height: 1.6;
-  margin: 1em 0;
-}
-
-.contact-info a {
-  color: #d48b00;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contact-info a:hover {
-  color: #b36d00;
-}
-
-/* 🗺 Блок карты */
-.map-block {
-  max-width: 1000px;
-  margin: 3em auto;
-  background: #fffefa;
-  padding: 2em;
-  border-radius: 16px;
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.04);
-}
-
-.map-block iframe {
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-}
-
-/* 💳 Блок реквизитов */
 .bank-block {
-  max-width: 1000px;
-  margin: 3em auto;
   background: linear-gradient(to right, #fff3d0, #ffecd2);
-  border-radius: 16px;
-  padding: 2em 3em;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 .bank-columns {
   display: flex;
   flex-wrap: wrap;
   gap: 2em;
-  justify-content: space-between;
 }
-
-.bank-left,
-.bank-right {
+.bank-left, .bank-right {
   flex: 1 1 300px;
   background: #fffef9;
   padding: 1.5em;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
-.bank-left p,
-.bank-right p {
-  font-size: 1.1em;
-  margin: 0.6em 0;
-}
-
-/* 📄 Блок загрузки */
-.download-block {
-  max-width: 800px;
-  margin: 3em auto;
-  text-align: center;
-  background: linear-gradient(to right, #faecd7, #fdeac3);
-  padding: 2em;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-}
-
-.download-block p {
-  font-size: 1.2em;
-  margin-bottom: 1.5em;
-  color: #4b3400;
-}
-
-.download-button {
-  display: inline-block;
-  background: linear-gradient(90deg, #f0a82e, #d48b00);
-  color: #fff;
-  font-weight: bold;
-  font-size: 1em;
-  text-decoration: none;
-  padding: 1em 2em;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.download-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* 📥 Footer */
+/* === FOOTER === */
 footer {
   text-align: center;
   padding: 3em 1em;
@@ -434,120 +228,7 @@ footer {
   border-top: 1px solid #eee;
 }
 
-/* ✨ Анимации */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 📱 Адаптивность */
-@media screen and (max-width: 768px) {
-  h1 {
-    font-size: 2.2em;
-  }
-  h2 {
-    font-size: 1.6em;
-  }
-  .bank-columns {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-/* === Адаптация под планшеты и телефоны === */
-@media (max-width: 992px) {
-  .top-navbar {
-    flex-wrap: wrap;
-    padding: 0 15px;
-    height: auto;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-  }
-
-  .nav-contacts {
-    font-size: 0.9rem;
-    margin-top: 8px;
-  }
-
-  .logo {
-    max-width: 300px;
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-  }
-
-  h3 {
-    font-size: 1rem;
-  }
-
-  .hero-header {
-    height: auto;
-    padding: 40px 15px;
-    background-position: center;
-  }
-
-  .overlay {
-    padding: 20px 10px;
-  }
-
-  .btn, button, .messenger {
-    width: 100%;
-    text-align: center;
-    font-size: 1rem;
-  }
-
-  .floating-panel {
-    flex-direction: row;
-    bottom: 10px;
-    right: 10px;
-    gap: 5px;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    font-size: 14px;
-  }
-
-  .nav-links a {
-    font-size: 0.9rem;
-    padding: 8px;
-  }
-
-  .nav-contacts {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-
-  .logo {
-    max-width: 200px;
-  }
-
-  .btn, button, .messenger {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-}
-/* Кнопка-бургер по умолчанию скрыта */
+/* === МОБИЛЬНОЕ МЕНЮ === */
 .nav-toggle {
   display: none;
   font-size: 1.8rem;
@@ -557,25 +238,14 @@ footer {
   cursor: pointer;
 }
 
-/* Мобильная версия */
 @media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-    margin-right: 10px;
-  }
-
-  .top-navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-  }
+  .nav-toggle { display: block; }
 
   .nav-links,
   .nav-contacts {
     display: none;
     flex-direction: column;
-    background: #7d0e0e;
+    background: linear-gradient(90deg, #ffe082, #ffb300);
     position: absolute;
     top: 56px;
     left: 0;
@@ -589,24 +259,11 @@ footer {
     display: flex;
   }
 
-  .nav-links li {
-    text-align: center;
-    padding: 8px 0;
-  }
-
-  .nav-contacts {
-    padding: 10px;
-    text-align: center;
-  }
-}
-@media (max-width: 768px) {
   .dropdown-menu-mobile {
-    all: unset; /* сбросить лишние стили */
+    all: unset;
     display: none;
     list-style: none;
-    background: #fff8e1;
-    padding: 0;
-    margin: 0;
+    background: linear-gradient(90deg, #ffe082, #ffb300);
     flex-direction: column;
     border-top: 1px solid rgba(0,0,0,0.1);
   }
@@ -621,4 +278,11 @@ footer {
     color: #4b3400;
     text-decoration: none;
   }
+}
+
+/* === АДАПТИВНОСТЬ (ПОСЛЕДНИЙ БЛОК) === */
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+  .nav-links a { font-size: 0.9rem; padding: 8px; }
+  .btn, button, .messenger { padding: 10px; font-size: 0.9rem; }
 }
