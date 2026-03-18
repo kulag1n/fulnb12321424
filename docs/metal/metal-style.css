@@ -688,7 +688,7 @@ button:hover,
   .nav-contacts {
     display: none;
     flex-direction: column;
-    background: #7d0e0e;
+    background: linear-gradient(90deg, #ffe082, #ffb300);
     position: absolute;
     top: 56px;
     left: 0;
@@ -717,7 +717,7 @@ button:hover,
     all: unset; /* сбросить лишние стили */
     display: none;
     list-style: none;
-    background: #fff8e1;
+    background: linear-gradient(90deg, #ffe082, #ffb300);
     padding: 0;
     margin: 0;
     flex-direction: column;
