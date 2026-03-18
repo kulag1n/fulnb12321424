@@ -725,7 +725,7 @@ button.send-btn:hover {
   .nav-contacts {
     display: none;
     flex-direction: column;
-    background: #7d0e0e;
+    background: linear-gradient(90deg, #ffe082, #ffb300); /* изменено с #7d0e0e */
     position: absolute;
     top: 56px;
     left: 0;
@@ -754,7 +754,7 @@ button.send-btn:hover {
     all: unset; /* сбросить лишние стили */
     display: none;
     list-style: none;
-    background: #fff8e1;
+    background: linear-gradient(90deg, #ffe082, #ffb300); /* изменено с #fff8e1 */
     padding: 0;
     margin: 0;
     flex-direction: column;
@@ -772,4 +772,3 @@ button.send-btn:hover {
     text-decoration: none;
   }
 }
-
