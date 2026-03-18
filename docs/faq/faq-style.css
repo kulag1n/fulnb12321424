@@ -1,83 +1,124 @@
-* {
-  box-sizing: border-box;
-}
-
 /* === ОСНОВНЫЕ СТИЛИ СТРАНИЦЫ === */
 body {
   font-family: "Segoe UI", sans-serif;
   background-color: #ffffff;
   color: #333;
   margin: 0;
-  padding-top: 52px;
+  padding-top: 52px; /* Высота навигационной панели */
 }
 
 /* === ЗАГОЛОВКИ === */
-h1 { font-size: 72px; }
-h2 { color: #007bff; text-align: center; margin-bottom: 40px; }
-h3 { font-size: 24px; margin: 5px; color: #ffe082; }
+h1 {
+  font-size: 72px;
+}
+h2 {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 40px;
+}
+h3 {
+  font-size: 24px;
+  margin: 5px;
+  color: #ffe082;
+}
 
 /* === ОБЁРТКА НАВИГАЦИИ === */
 .nav-wrapper {
   position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 52px;
-  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px; /* Обязательно указываем, чтобы glow стал видимым */
+  z-index: 1000; /* Чтобы навигация была поверх остальных блоков */
 }
 
-/* === НАВИГАЦИОННАЯ ПАНЕЛЬ === */
+/* === НАВИГАЦИОННАЯ ПАНЕЛЬ (.top-navbar) === */
 .top-navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: relative; /* 👈 чтобы .nav-glow не перекрывала */
   height: 52px;
   background: linear-gradient(90deg, #ffe082, #ffb300);
   padding: 0 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 1; /* Поверх .nav-glow */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-glow {
   position: absolute;
-  bottom: 0; left: 0;
-  width: 100%; height: 18px;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, rgba(255,193,77,0.4) 0%, transparent 70%);
+  bottom: 0; /* Свечение снизу под панелью */
+  left: 0;
+  width: 100%;
+  height: 18px; /* Высота свечения */
+  pointer-events: none; /* Чтобы не мешать клику по меню */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 193, 77, 0.4) 0%,
+    transparent 70%
+  );
   animation: glow 5s infinite ease-in-out;
-  z-index: 0;
+  z-index: 0; /* Glow под навигацией */
 }
 
+/* === Анимация свечения === */
 @keyframes glow {
-  0%,100% { opacity: .4; transform: scale(1); }
-  50% { opacity: .7; transform: scale(1.05); }
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
 }
 
-/* === МЕНЮ === */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px; /* Компактная высота */
+  background: linear-gradient(90deg, #ffe082, #ffb300);
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Меню навигации слева */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 22px;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
 }
-.nav-links li { position: relative; }
+.nav-links li {
+  position: relative;
+}
 .nav-links a {
-  text-decoration: none;
+  text-decoration: none; /* ❌ убираем подчёркивание */
+  border-bottom: none; /* ❌ если вдруг используется граница снизу */
   color: #4b3400;
   font-weight: 500;
   font-size: 17px;
   padding: 6px 10px;
   border-radius: 6px;
-  display: inline-block;
-  transition: .2s;
-}
-.nav-links a:hover {
-  transform: scale(1.08);
-  background: rgba(255,255,255,0.15);
-  color: #fff;
+  display: inline-block; /* ✅ чтобы transform: scale работал */
+  transition: transform 0.2s ease, background 0.3s ease, color 0.3s ease;
 }
 
-/* === КОНТАКТЫ В МЕНЮ === */
+.nav-links a:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* Контактные данные справа */
 .nav-contacts {
   font-size: 17px;
   font-weight: 500;
@@ -92,23 +133,24 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   text-decoration: none;
 }
 .nav-contacts a:hover {
-  color: #fff;
+  color: #ffffff;
   text-decoration: underline;
 }
 
-/* === ВЫПАДАЮЩЕЕ МЕНЮ === */
+/* === ВЫПАДАЮЩЕЕ МЕНЮ "ТОВАРЫ" === */
 .dropdown-menu {
   position: absolute;
-  top: 100%; left: 0;
-  background: rgba(255,193,77,0.96);
+  top: 100%;
+  left: 0;
+  background: rgba(255, 193, 77, 0.96);
   border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   padding: 10px 0;
   display: none;
   min-width: 220px;
   transform: translateY(-8px);
   opacity: 0;
-  transition: .3s;
+  transition: all 0.3s ease;
 }
 .dropdown:hover .dropdown-menu {
   display: block;
@@ -122,12 +164,14 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   padding: 6px 18px;
 }
 .dropdown-menu a:hover {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
-/* === КНОПКИ === */
-.btn, button, .messenger {
+/* === СТИЛЬ КНОПОК В ОСНОВНОМ СОСТОЯНИИ === */
+.btn,
+button,
+.messenger {
   padding: 12px 24px;
   border-radius: 15px;
   color: #4b3400;
@@ -135,44 +179,126 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   cursor: pointer;
   border: none;
   text-decoration: none;
-  transition: .2s;
-  background: linear-gradient(90deg, #ffe082, #ffb300);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+  background: linear-gradient(
+    90deg,
+    #ffe082,
+    #ffb300
+  ); /* ✅ жёлто-оранжевый градиент */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
-.btn:hover, button:hover, .messenger:hover {
-  background: linear-gradient(90deg, #ffd54f, #ffa500);
-  transform: scale(1.08);
-  box-shadow: 0 0 12px rgba(255,193,77,0.6);
+/* === ЭФФЕКТ ПРИ НАВЕДЕНИИ: УВЕЛИЧЕНИЕ И СИЯНИЕ === */
+.btn:hover,
+button:hover,
+.messenger:hover {
+  background: linear-gradient(
+    90deg,
+    #ffd54f,
+    #ffa500
+  ); /* более светлый оттенок */
+  transform: scale(1.08); /* ✅ увеличиваем кнопку */
+  box-shadow: 0 0 12px rgba(255, 193, 77, 0.6); /* мягкое сияние */
+  color: #ffffff;
+}
+/* === КНОПКИ МЕССЕНДЖЕРОВ === */
+.messenger-buttons a {
+  display: inline-block; /* 👈 нужно для transform */
+  padding: 12px 24px;
+  border-radius: 15px;
+  font-weight: bold;
+  text-decoration: none;
   color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* === ПЛАВАЮЩИЕ КНОПКИ === */
+/* ✅ WhatsApp кнопка */
+.whatsapp {
+  background-color: #25d366;
+}
+
+/* ✅ Telegram кнопка */
+.telegram {
+  background-color: #0088cc;
+}
+
+/* === ЭФФЕКТ НАВЕДЕНИЯ НА КНОПКУ === */
+.whatsapp:hover,
+.telegram:hover {
+  transform: scale(1.08); /* 🔍 увеличение */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); /* 💡 подсветка */
+}
+
+/* === ПЛАВАЮЩАЯ ПАНЕЛЬ СБОКУ === */
 .floating-panel {
   position: fixed;
-  bottom: 0; right: 0;
+  bottom: 0px; /* 🔽 ровно по нижнему краю */
+  right: 0px; /* 🔽 ровно по правому краю */
   display: flex;
   flex-direction: column;
   z-index: 9999;
-  gap: 3px;
+  margin: 0; /* ⛔️ никаких отступов */
+  padding: 0;
+  gap: 3px; /* 🟢 расстояние между кнопками */
 }
+
 .floating-panel a {
   display: block;
   padding: 10px 20px;
+  margin: 0;
   font-size: 14px;
   font-weight: bold;
-  border-radius: 15px;
-  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 15px; /* 🎯 никаких скруглений, ровно по краю */
+  color: #ffffff;
+  box-shadow: none;
   background-color: #333;
-  transition: .2s;
+  transition: transform 0.2s ease;
 }
-.floating-panel a:hover { transform: scale(1.08); }
 
-/* === FAQ === */
+/* 🟢 Зеленая кнопка WhatsApp */
+.floating-panel .whatsapp {
+  background-color: #25d366;
+}
+
+/* 🔵 Синяя кнопка Telegram */
+.floating-panel .telegram {
+  background-color: #0088cc;
+}
+
+/* 💡 Эффект при наведении */
+.floating-panel a:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+/* === Анимация свечения === */
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fffef9;
+  color: #4b3400;
+  margin: 0;
+  padding: 0;
+}
+
 #faq {
   max-width: 960px;
   margin: 4em auto;
   padding: 0 1.5em;
 }
+
 #faq h2 {
   font-size: 4em;
   text-align: center;
@@ -180,45 +306,81 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   color: #f1b139;
   animation: pulseTitle 3s ease-in-out infinite;
 }
+
+/* Анимация заголовка */
 @keyframes pulseTitle {
-  0%,100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.03); opacity: .9; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.9;
+  }
 }
+
+/* Карточки FAQ */
 .faq-item {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   padding: 2em 2.5em;
   border-radius: 16px;
   background-color: #fffdf5;
-  box-shadow: 0 1px 4px rgba(255,193,77,0.1);
-  transition: .4s;
+  box-shadow: 0 1px 4px rgba(255, 193, 77, 0.1);
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+  will-change: transform;
   cursor: pointer;
+  max-width: 100%;
 }
+
 .faq-item:hover {
-  transform: scale(1.015);
-  box-shadow: 0 4px 12px rgba(255,193,77,0.25);
+  transform: scale(1.015); /* очень плавное увеличение */
+  box-shadow: 0 4px 12px rgba(255, 193, 77, 0.25); /* деликатная подсветка */
 }
+
+/* Заголовок вопроса */
 .faq-item h3 {
-  font-size: 2em;
+  font-size: 2em; /* стал крупнее */
   font-weight: 600;
-  margin: 0 0 .6em;
+  margin: 0 0 0.6em;
   color: #7c5b00;
 }
+
+/* Описание */
 .faq-item p {
   margin: 0;
-  font-size: 1.3em;
+  font-size: 1.3em; /* тоже увеличен */
   line-height: 1.6;
   color: #4a3c00;
 }
+
+/* Ссылки внутри */
+.faq-item a {
+  color: #e6a700;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.faq-item a:hover {
+  color: #cf8c00;
+}
+
+/* Ответ */
 .faq-a {
   overflow: hidden;
   max-height: 0;
   opacity: 0;
   transform: translateY(-5px);
-  transition: .6s;
+  transition: max-height 0.6s ease, opacity 0.5s ease, transform 0.5s ease,
+    padding 0.4s ease, border-radius 0.3s ease;
   padding: 0 1.2em;
+  font-size: 1em;
+  line-height: 1.6;
+  border-radius: 0 0 16px 16px;
   background-color: #fffdf5;
   border-top: 1px solid #ffd88e;
 }
+
 .faq-a.open {
   max-height: 600px;
   opacity: 1;
@@ -226,92 +388,172 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   padding: 1em 1.2em;
 }
 
-/* === POPUP FORM === */
-.popup-form {
-  background: #fffbe6;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255,223,112,0.4);
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.popup-form input,
-.popup-form textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #f5c65d;
+.faq-q {
+  font-size: 1.4em;
 }
 
-/* === MODAL === */
-.modal-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(25,25,25,0.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-.modal-content {
-  background: #fffef9;
-  padding: 2em;
-  border-radius: 16px;
-  max-width: 500px;
-  width: 90%;
-  position: relative;
-  animation: fadeInUp .5s ease;
-}
-
-/* === АДАПТИВНОСТЬ === */
+/* === Адаптация под планшеты и телефоны === */
 @media (max-width: 992px) {
-  .top-navbar { flex-wrap: wrap; padding: 0 15px; height: auto; }
-  .nav-links { flex-direction: column; gap: 10px; margin-top: 10px; }
-  .nav-contacts { font-size: .9rem; margin-top: 8px; }
+  .top-navbar {
+    flex-wrap: wrap;
+    padding: 0 15px;
+    height: auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-contacts {
+    font-size: 0.9rem;
+    margin-top: 8px;
+  }
+
+  .logo {
+    max-width: 300px;
+    height: auto;
+  }
 }
 
 @media (max-width: 768px) {
-  .nav-toggle { display: block; }
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .hero-header {
+    height: auto;
+    padding: 40px 15px;
+    background-position: center;
+  }
+
+  .overlay {
+    padding: 20px 10px;
+  }
+
+  .btn, button, .messenger {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .floating-panel {
+    flex-direction: row;
+    bottom: 10px;
+    right: 10px;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .nav-contacts {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .logo {
+    max-width: 200px;
+  }
+
+  .btn, button, .messenger {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Кнопка-бургер по умолчанию скрыта */
+.nav-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    margin-right: 10px;
+  }
+
+  .top-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
 
   .nav-links,
   .nav-contacts {
     display: none;
     flex-direction: column;
-    background: linear-gradient(90deg, #ffe082, #ffb300);
+    background: linear-gradient(90deg, #ffe082, #ffb300); /* фирменный золотистый */
     position: absolute;
-    top: 56px; left: 0; right: 0;
+    top: 56px;
+    left: 0;
+    right: 0;
     padding: 10px 0;
     z-index: 999;
   }
 
   .nav-links.active,
-  .nav-contacts.active { display: flex; }
+  .nav-contacts.active {
+    display: flex;
+  }
 
+  .nav-links li {
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  .nav-contacts {
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
   .dropdown-menu-mobile {
-    all: unset;
+    all: unset; /* сбросить лишние стили */
     display: none;
     list-style: none;
-    background: linear-gradient(90deg, #ffe082, #ffb300);
+    background: linear-gradient(90deg, #ffe082, #ffb300); /* фирменный золотистый */
+    padding: 0;
+    margin: 0;
     flex-direction: column;
     border-top: 1px solid rgba(0,0,0,0.1);
   }
-  .dropdown.open > .dropdown-menu-mobile { display: block; }
+
+  .dropdown.open > .dropdown-menu-mobile {
+    display: block;
+  }
+
   .dropdown-menu-mobile li a {
     display: block;
     padding: 10px 16px;
     color: #4b3400;
     text-decoration: none;
   }
-}
-
-@media (max-width: 480px) {
-  body { font-size: 14px; }
-  .nav-links a { font-size: .9rem; padding: 8px; }
-  .btn, button, .messenger { padding: 10px; font-size: .9rem; }
 }
