@@ -328,12 +328,8 @@ button:hover,
 
 .product-content h2 {
   margin: 0;
-  padding: 8px 0;
-  font-size: 1.4em;
-  font-weight: 600;
-  text-align: center;
+  font-size: 1.2em;
   color: #f5a448;
-  font-family: "Segoe UI", sans-serif;
   border-bottom: 2px solid #ffe082;
   animation: pulseTitle 2.5s ease-in-out infinite;
 }
@@ -527,7 +523,6 @@ button:hover,
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   animation: fadeCenter 5s ease forwards;
-  transition: opacity 0.5s ease;
 }
 .custom-alert.success {
   background-color: #4caf50;
@@ -556,6 +551,12 @@ button:hover,
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.95);
   }
+}
+.order-btn {
+  margin: 1.3em auto;
+  padding: 12px 24px;
+  margin-right: 30px;
+  margin-bottom: 50px;
 }
 .ten {
   color: #4caf50;
@@ -683,7 +684,7 @@ button:hover,
     position: relative;
   }
 
-  /* Заменено: фон мобильного меню на фирменный золотой градиент */
+  /* Мобильное меню: фон заменён на фирменный золотой градиент */
   .nav-links,
   .nav-contacts {
     display: none;
@@ -717,7 +718,7 @@ button:hover,
     all: unset; /* сбросить лишние стили */
     display: none;
     list-style: none;
-    /* Заменено: фон подменю мобильного меню на фирменный золотой градиент */
+    /* Подменю мобильного меню: фон заменён на фирменный золотой градиент */
     background: linear-gradient(90deg, #ffe082, #ffb300);
     padding: 0;
     margin: 0;
