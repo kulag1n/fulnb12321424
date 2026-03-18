@@ -1,83 +1,126 @@
 * {
   box-sizing: border-box;
 }
-
 /* === ОСНОВНЫЕ СТИЛИ СТРАНИЦЫ === */
 body {
-  font-family: "Segoe UI", sans-serif;
-  background-color: #ffffff;
-  color: #333;
+  font-family: sans-serif;
   margin: 0;
-  padding-top: 52px;
+  padding: 2em;
+  background: #fafafa; /* Высота навигационной панели */
 }
 
 /* === ЗАГОЛОВКИ === */
-h1 { font-size: 72px; }
-h2 { color: #007bff; text-align: center; margin-bottom: 40px; }
-h3 { font-size: 24px; margin: 5px; color: #ffe082; }
+h1 {
+  font-size: 72px;
+}
+h2 {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 40px;
+}
+h3 {
+  font-size: 24px;
+  margin: 5px;
+  color: #ffe082;
+}
 
 /* === ОБЁРТКА НАВИГАЦИИ === */
 .nav-wrapper {
   position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 52px;
-  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px; /* Обязательно указываем, чтобы glow стал видимым */
+  z-index: 1000; /* Чтобы навигация была поверх остальных блоков */
 }
 
-/* === НАВИГАЦИОННАЯ ПАНЕЛЬ === */
+/* === НАВИГАЦИОННАЯ ПАНЕЛЬ (.top-navbar) === */
 .top-navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: relative; /* 👈 чтобы .nav-glow не перекрывала */
   height: 52px;
   background: linear-gradient(90deg, #ffe082, #ffb300);
   padding: 0 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 1; /* Поверх .nav-glow */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-glow {
   position: absolute;
-  bottom: 0; left: 0;
-  width: 100%; height: 18px;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, rgba(255,193,77,0.4) 0%, transparent 70%);
+  bottom: 0; /* Свечение снизу под панелью */
+  left: 0;
+  width: 100%;
+  height: 18px; /* Высота свечения */
+  pointer-events: none; /* Чтобы не мешать клику по меню */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 193, 77, 0.4) 0%,
+    transparent 70%
+  );
   animation: glow 5s infinite ease-in-out;
-  z-index: 0;
+  z-index: 0; /* Glow под навигацией */
 }
 
+/* === Анимация свечения === */
 @keyframes glow {
-  0%,100% { opacity: .4; transform: scale(1); }
-  50% { opacity: .7; transform: scale(1.05); }
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
 }
 
-/* === МЕНЮ === */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px; /* Компактная высота */
+  background: linear-gradient(90deg, #ffe082, #ffb300);
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Меню навигации слева */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 22px;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
 }
-.nav-links li { position: relative; }
+.nav-links li {
+  position: relative;
+}
 .nav-links a {
-  text-decoration: none;
+  text-decoration: none; /* ❌ убираем подчёркивание */
+  border-bottom: none; /* ❌ если вдруг используется граница снизу */
   color: #4b3400;
   font-weight: 500;
   font-size: 17px;
   padding: 6px 10px;
   border-radius: 6px;
-  display: inline-block;
-  transition: .2s;
-}
-.nav-links a:hover {
-  transform: scale(1.08);
-  background: rgba(255,255,255,0.15);
-  color: #fff;
+  display: inline-block; /* ✅ чтобы transform: scale работал */
+  transition: transform 0.2s ease, background 0.3s ease, color 0.3s ease;
 }
 
-/* === КОНТАКТЫ В МЕНЮ === */
+.nav-links a:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* Контактные данные справа */
 .nav-contacts {
   font-size: 17px;
   font-weight: 500;
@@ -92,23 +135,24 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   text-decoration: none;
 }
 .nav-contacts a:hover {
-  color: #fff;
+  color: #ffffff;
   text-decoration: underline;
 }
 
-/* === ВЫПАДАЮЩЕЕ МЕНЮ === */
+/* === ВЫПАДАЮЩЕЕ МЕНЮ "ТОВАРЫ" === */
 .dropdown-menu {
   position: absolute;
-  top: 100%; left: 0;
-  background: rgba(255,193,77,0.96);
+  top: 100%;
+  left: 0;
+  background: rgba(255, 193, 77, 0.96);
   border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   padding: 10px 0;
   display: none;
   min-width: 220px;
   transform: translateY(-8px);
   opacity: 0;
-  transition: .3s;
+  transition: all 0.3s ease;
 }
 .dropdown:hover .dropdown-menu {
   display: block;
@@ -122,12 +166,14 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   padding: 6px 18px;
 }
 .dropdown-menu a:hover {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
-/* === КНОПКИ === */
-.btn, button, .messenger {
+/* === СТИЛЬ КНОПОК В ОСНОВНОМ СОСТОЯНИИ === */
+.btn,
+button,
+.messenger {
   padding: 12px 24px;
   border-radius: 15px;
   color: #4b3400;
@@ -135,39 +181,113 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   cursor: pointer;
   border: none;
   text-decoration: none;
-  transition: .2s;
-  background: linear-gradient(90deg, #ffe082, #ffb300);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+  background: linear-gradient(
+    90deg,
+    #ffe082,
+    #ffb300
+  ); /* ✅ жёлто-оранжевый градиент */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
-.btn:hover, button:hover, .messenger:hover {
-  background: linear-gradient(90deg, #ffd54f, #ffa500);
-  transform: scale(1.08);
-  box-shadow: 0 0 12px rgba(255,193,77,0.6);
+/* === ЭФФЕКТ ПРИ НАВЕДЕНИИ: УВЕЛИЧЕНИЕ И СИЯНИЕ === */
+.btn:hover,
+button:hover,
+.messenger:hover {
+  background: linear-gradient(
+    90deg,
+    #ffd54f,
+    #ffa500
+  ); /* более светлый оттенок */
+  transform: scale(1.08); /* ✅ увеличиваем кнопку */
+  box-shadow: 0 0 12px rgba(255, 193, 77, 0.6); /* мягкое сияние */
+  color: #ffffff;
+}
+/* === КНОПКИ МЕССЕНДЖЕРОВ === */
+.messenger-buttons a {
+  display: inline-block; /* 👈 нужно для transform */
+  padding: 12px 24px;
+  border-radius: 15px;
+  font-weight: bold;
+  text-decoration: none;
   color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* === ПЛАВАЮЩИЕ КНОПКИ === */
+/* ✅ WhatsApp кнопка */
+.whatsapp {
+  background-color: #25d366;
+}
+
+/* ✅ Telegram кнопка */
+.telegram {
+  background-color: #0088cc;
+}
+
+/* === ЭФФЕКТ НАВЕДЕНИЯ НА КНОПКУ === */
+.whatsapp:hover,
+.telegram:hover {
+  transform: scale(1.08); /* 🔍 увеличение */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); /* 💡 подсветка */
+}
+
+/* === ПЛАВАЮЩАЯ ПАНЕЛЬ СБОКУ === */
 .floating-panel {
   position: fixed;
-  bottom: 0; right: 0;
+  bottom: 0px; /* 🔽 ровно по нижнему краю */
+  right: 0px; /* 🔽 ровно по правому краю */
   display: flex;
   flex-direction: column;
   z-index: 9999;
-  gap: 3px;
+  margin: 0; /* ⛔️ никаких отступов */
+  padding: 0;
+  gap: 3px; /* 🟢 расстояние между кнопками */
 }
+
 .floating-panel a {
   display: block;
   padding: 10px 20px;
+  margin: 0;
   font-size: 14px;
   font-weight: bold;
-  border-radius: 15px;
-  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 15px; /* 🎯 никаких скруглений, ровно по краю */
+  color: #ffffff;
+  box-shadow: none;
   background-color: #333;
-  transition: .2s;
+  transition: transform 0.2s ease;
 }
-.floating-panel a:hover { transform: scale(1.08); }
 
-/* === СЕТКА ТОВАРОВ === */
+/* 🟢 Зеленая кнопка WhatsApp */
+.floating-panel .whatsapp {
+  background-color: #25d366;
+}
+
+/* 🔵 Синяя кнопка Telegram */
+.floating-panel .telegram {
+  background-color: #0088cc;
+}
+
+/* 💡 Эффект при наведении */
+.floating-panel a:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+/* === Анимация свечения === */
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* === Сетка карточек === */
 .product-grid {
   display: flex;
   flex-wrap: wrap;
@@ -175,7 +295,7 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   justify-content: center;
 }
 
-/* === КАРТОЧКА ТОВАРА === */
+/* === Карточка товара === */
 .product-card {
   background: #fffef9;
   border: 1px solid #ccc;
@@ -183,64 +303,80 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   width: 280px;
   flex: 0 1 280px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: .3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.4s ease, background 0.3s ease;
   position: relative;
 }
+
 .product-card:hover {
   transform: scale(1.04);
-  background: #ffffff;
-  box-shadow: 0 0 18px rgba(252,234,187,0.7), 0 4px 18px rgba(0,0,0,0.2);
+  background: rgb(255, 255, 255); /* мягкая подсветка */
+  box-shadow: 0 0 18px rgba(252, 234, 187, 0.7), 0 4px 18px rgba(0, 0, 0, 0.2);
 }
+
+/* === Изображение товара === */
 .product-card img {
+  display: block;
   width: 100%;
   object-fit: cover;
 }
 
-/* === КОНТЕНТ КАРТОЧКИ === */
+/* === Контент карточки === */
 .product-content {
   padding: 1em;
   text-align: center;
 }
+
 .product-content h2 {
   margin: 0;
   padding: 8px 0;
   font-size: 1.4em;
   font-weight: 600;
+  text-align: center;
   color: #f5a448;
+  font-family: "Segoe UI", sans-serif;
   border-bottom: 2px solid #ffe082;
   animation: pulseTitle 2.5s ease-in-out infinite;
 }
+
 .product-content .desc {
   font-size: 0.95em;
-  color: #4b3400; /* тёплый коричневый */
+  color: rba(252, 234, 187);
   margin: 0.5em 0;
 }
+
 .product-content .price {
   font-weight: bold;
   color: #2c3e50;
   font-size: 1.1em;
 }
 
-/* === ХОВЕР-ДЕТАЛИ === */
+/* === Блок при наведении === */
 .hover-details {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: rgba(252,234,187,0.95);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(252, 234, 187, 0.95);
   padding: 1em;
   transform: translateY(100%);
-  transition: .4s;
+  transition: transform 0.4s ease;
 }
+
 .product-card:hover .hover-details {
   transform: translateY(0);
+  box-shadow: 0 0 30px rgba(255, 170, 75, 0.6),
+    0 0 10px rgba(255, 230, 180, 0.3);
   background: radial-gradient(circle at top right, #fff7e6, #fdf6d9);
 }
+
 .hover-details ul {
   list-style: none;
   padding: 0;
   margin: 0 0 1em 0;
   font-size: 0.9em;
 }
+
 .hover-details button {
   background-color: #f39c12;
   color: white;
@@ -250,16 +386,98 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   cursor: pointer;
 }
 
-/* === POPUP-FORM === */
+/* === Адаптация для мобильных экранов === */
+@media (max-width: 600px) {
+  .product-card {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}
+.product-card {
+  flex: 0 1 280px;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.but {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Segoe UI", sans-serif;
+  padding: 20px 30px;
+  margin: 2em auto;
+  text-align: center;
+  color: #4b3400;
+
+  background: linear-gradient(90deg, #ffe082, #ffb300);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(252, 234, 187, 0.6);
+
+  animation: glowTitle 3s ease-in-out infinite;
+  letter-spacing: 1.2px;
+  position: relative;
+  z-index: 1;
+}
+.but::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shine 2.5s infinite;
+  z-index: -1;
+  border-radius: inherit;
+}
+.price {
+  font-size: 28px;
+  font-weight: 600;
+  font-family: "Segoe UI", sans-serif;
+  color: #4b3400; /* тёплый коричневый текст */
+  background: linear-gradient(90deg, #fff7d5, #ffe9a1); /* нежный желток */
+  padding: 12px 24px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 233, 180, 0.4);
+  text-align: center;
+  display: inline-block;
+  animation: pulsePrice 2s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.product-card:hover .price {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
 .popup-form {
   position: absolute;
-  bottom: 10px; left: 10px; right: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
   background: #fffbe6;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255,223,112,0.4);
+  box-shadow: 0 0 20px rgba(255, 223, 112, 0.4);
   z-index: 100;
 }
+
+.popup-form h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #4b3400;
+}
+
 .popup-form input {
   width: 100%;
   margin: 10px 0;
@@ -268,6 +486,7 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   border-radius: 8px;
   border: 1px solid #f5c65d;
 }
+
 .popup-form button.send-btn {
   background: linear-gradient(90deg, #ffda6b, #fbc02d);
   color: #4b3400;
@@ -277,12 +496,26 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   border-radius: 8px;
   cursor: pointer;
 }
-
-/* === ALERT === */
+.send-btn {
+  font-size: 18px;
+  padding: 12px 20px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 50px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.send-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+}
 .custom-alert {
   display: none;
   position: fixed;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%) scale(0.95);
   padding: 20px 30px;
   border-radius: 10px;
@@ -290,63 +523,4 @@ h3 { font-size: 24px; margin: 5px; color: #ffe082; }
   color: #fff;
   max-width: 90%;
   text-align: center;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-  z-index: 1000;
-  animation: fadeCenter 5s ease forwards;
-}
-.custom-alert.success { background-color: #4caf50; }
-.custom-alert.error { background-color: #f44336; }
-.custom-alert.info { background-color: #2196f3; }
-
-@keyframes fadeCenter {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
-  10%,90% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
-}
-
-/* === АДАПТИВНОСТЬ === */
-@media (max-width: 992px) {
-  .top-navbar { flex-wrap: wrap; padding: 0 15px; height: auto; }
-  .nav-links { flex-direction: column; gap: 10px; margin-top: 10px; }
-  .nav-contacts { font-size: .9rem; margin-top: 8px; }
-}
-
-@media (max-width: 768px) {
-  .nav-toggle { display: block; }
-
-  .nav-links,
-  .nav-contacts {
-    display: none;
-    flex-direction: column;
-    background: linear-gradient(90deg, #ffe082, #ffb300);
-    position: absolute;
-    top: 56px; left: 0; right: 0;
-    padding: 10px 0;
-    z-index: 999;
-  }
-
-  .nav-links.active,
-  .nav-contacts.active { display: flex; }
-
-  .dropdown-menu-mobile {
-    all: unset;
-    display: none;
-    list-style: none;
-    background: linear-gradient(90deg, #ffe082, #ffb300);
-    flex-direction: column;
-    border-top: 1px solid rgba(0,0,0,0.1);
-  }
-  .dropdown.open > .dropdown-menu-mobile { display: block; }
-  .dropdown-menu-mobile li a {
-    display: block;
-    padding: 10px 16px;
-    color: #4b3400;
-    text-decoration: none;
-  }
-}
-
-@media (max-width: 480px) {
-  body { font-size: 14px; }
-  .nav-links a { font-size: .9rem; padding: 8px; }
-  .btn, button, .messenger { padding: 10px; font-size: .9rem; }
-}
+  box-shadow: 0 8px 16px rgba(0, 0, 
