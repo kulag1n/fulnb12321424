@@ -1,4 +1,4 @@
-/* Логотип фиксирован 32x32 */
+/* Увеличенное свернутое состояние — больше области касания, иконка 32x32 остаётся */
 .floating-panel .fbtn .logo-img {
   width: 32px;
   height: 32px;
@@ -6,49 +6,45 @@
   display: block;
 }
 
-/* Свернутое состояние: видна только иконка 32x32, минимальная кликабельная область */
+/* Свернутое состояние: увеличенный контейнер под иконку */
 .floating-panel .fbtn.collapsed {
-  width: 40px;               /* 32px иконка + 2*4px запас для касания */
-  height: 40px;
-  padding: 4px;              /* минимальный внутренний отступ, чтобы иконка не прилипала */
-  border-radius: 10px;
+  width: 56px;            /* общий размер кнопки по ширине */
+  height: 56px;           /* общий размер кнопки по высоте */
+  padding: 12px;          /* внутренний отступ вокруг иконки */
+  border-radius: 14px;    /* скругление рамки */
   gap: 0;
   justify-content: center;
   font-size: 0;
-  border: none;              /* убираем видимую рамку */
-  background: transparent;   /* прозрачный фон, если нужен фон — можно вернуть */
-  box-shadow: none;          /* убираем тень в свернутом виде */
-  overflow: visible;
+  border: none;           /* убрать видимую рамку, можно вернуть при желании */
+  background: transparent;/* прозрачный фон; можно заменить на цвет/градиент */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06); /* лёгкая тень для глубины */
+  box-sizing: border-box;
 }
 
-/* Если для Telegram нужен белый фон в свернутом виде — можно включить:
-.floating-panel #btn-tg.collapsed { background:#fff; border-radius:10px; }
-*/
+/* Если нужен видимый фон для Telegram в свернутом виде */
+.floating-panel #btn-tg.collapsed {
+  background: #ffffff !important;
+}
 
-/* Развёрнутое состояние остаётся компактным и как было */
+/* Если нужен видимый фон для MAX в свернутом виде */
+.floating-panel #btn-max.collapsed {
+  background: linear-gradient(135deg,#00D4FF,#7B68EE,#8B00FF);
+}
+
+/* Развёрнутое состояние оставляем прежним, но выравниваем по высоте */
 .floating-panel .fbtn.expanded {
-  height: 40px;              /* та же высота, чтобы не прыгала */
-  padding: 6px 12px;         /* компактный padding для текста */
-  border-radius: 12px;
+  height: 56px;           /* совпадает с collapsed, чтобы не прыгала */
+  padding: 12px 18px;
+  border-radius: 14px;
   gap: 10px;
   justify-content: flex-start;
   font-size: 15px;
-  border: none;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  background: linear-gradient(135deg,#00D4FF,#7B68EE,#8B00FF); /* или оставить индивидуальные правила */
 }
 
-/* Текст видим только в expanded */
-.floating-panel .fbtn .ftext { display: none; }
-.floating-panel .fbtn.expanded .ftext { display: inline-block; color: #fff; }
-
-/* Если хочешь, чтобы в collapsed был небольшой контур вокруг иконки, включи это:
-.floating-panel .fbtn.collapsed { border:1px solid rgba(0,0,0,0.06); background-clip:padding-box; }
-*/
-
-/* Мобильная корректировка: чуть больше области касания */
+/* Мобильная корректировка: чуть меньше, но всё ещё удобная область касания */
 @media (max-width:600px){
-  .floating-panel .fbtn.collapsed { width:44px; height:44px; padding:6px; border-radius:12px; }
-  .floating-panel .fbtn.expanded { height:44px; padding:8px 12px; font-size:15px; }
+  .floating-panel .fbtn.collapsed { width:52px; height:52px; padding:10px; border-radius:12px; }
+  .floating-panel .fbtn.expanded { height:52px; padding:10px 14px; font-size:14px; }
   .floating-panel .fbtn .logo-img { width:32px; height:32px; }
 }
