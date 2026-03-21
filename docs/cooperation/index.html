@@ -192,7 +192,111 @@
         <span class="ftext">Написать в Telegram</span>
       </a>
     </div>
-    <script src="mob.js"></script>
+
+    <!-- Исправленный скрипт вместо mob.js -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var toggleBtn = document.querySelector('.nav-toggle');
+      var navLinks = document.querySelector('.nav-links');
+
+      // Бургер — показывает/скрывает общий список ссылок
+      if (toggleBtn && navLinks) {
+        toggleBtn.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+        });
+
+        // Делегирование кликов по пунктам с подменю
+        navLinks.addEventListener('click', function(e) {
+          var target = e.target;
+          // closest может быть не везде, но в современных браузерах есть; на всякий случай проверяем
+          while (target && target !== navLinks && !(target.matches && target.matches('.dropdown > a'))) {
+            target = target.parentElement;
+          }
+          var link = target && target.matches && target.matches('.dropdown > a') ? target : null;
+          if (!link) return;
+
+          // На мобильных и для href="#" не даём навигации
+          var isHash = link.getAttribute('href') === '#';
+          if (isHash || window.innerWidth <= 1024) {
+            e.preventDefault();
+          }
+
+          var li = link.parentElement;
+
+          // Переключаем текущее
+          var isOpen = li.classList.contains('open');
+          // Закрываем соседние открытые в этом же списке
+          var siblings = Array.prototype.slice.call(li.parentElement.children);
+          siblings.forEach(function(sibling) {
+            if (sibling !== li && sibling.classList && sibling.classList.contains('open')) {
+              sibling.classList.remove('open');
+            }
+          });
+          // Тогглим текущее
+          if (isOpen) {
+            li.classList.remove('open');
+          } else {
+            li.classList.add('open');
+          }
+        });
+      }
+
+      // Клик вне dropdown — закрывает подменю
+      document.addEventListener('click', function(e) {
+        var el = e.target;
+        var insideDropdown = false;
+        while (el) {
+          if (el.classList && el.classList.contains('dropdown')) {
+            insideDropdown = true;
+            break;
+          }
+          el = el.parentElement;
+        }
+        if (!insideDropdown) {
+          var opened = document.querySelectorAll('.dropdown.open');
+          Array.prototype.forEach.call(opened, function(li) {
+            li.classList.remove('open');
+          });
+        }
+      });
+
+      // === МОДАЛЬНОЕ ОКНО "Форма партнёрства" ===
+      var openBtn = document.getElementById('openModal');
+      var modal = document.getElementById('modalForm');
+      var closeBtn = document.getElementById('closeModal');
+
+      if (openBtn && modal) {
+        openBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          var style = window.getComputedStyle(modal);
+          var isVisible = style.display !== 'none';
+
+          if (isVisible) {
+            modal.style.display = 'none';   // закрыть
+          } else {
+            modal.style.display = 'flex';   // открыть
+          }
+        });
+      }
+
+      if (closeBtn && modal) {
+        closeBtn.addEventListener('click', function() {
+          modal.style.display = 'none';
+        });
+      }
+
+      // Закрытие по клику вне формы
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+          }
+        });
+      }
+    });
+    </script>
+
     <script src="scripts/translate.js"></script>
   </body>
   <footer>
