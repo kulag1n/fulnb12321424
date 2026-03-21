@@ -1,76 +1,54 @@
-/* assets/css/max-telegram.css */
-#floating-buttons {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 99999;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  align-items:flex-end;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+/* Логотип фиксирован 32x32 */
+.floating-panel .fbtn .logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
 }
 
-/* Общий стиль кнопок */
-.fbtn {
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:14px 28px;
-  background:linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF);
-  color:white;
-  border-radius:14px;
-  text-decoration:none;
-  font-weight:600;
-  font-size:16px;
-  box-shadow:0 4px 15px rgba(123,104,238,0.3);
-  transition:all 0.18s ease;
-  overflow:hidden;
+/* Свернутое состояние: видна только иконка 32x32, минимальная кликабельная область */
+.floating-panel .fbtn.collapsed {
+  width: 40px;               /* 32px иконка + 2*4px запас для касания */
+  height: 40px;
+  padding: 4px;              /* минимальный внутренний отступ, чтобы иконка не прилипала */
+  border-radius: 10px;
+  gap: 0;
+  justify-content: center;
+  font-size: 0;
+  border: none;              /* убираем видимую рамку */
+  background: transparent;   /* прозрачный фон, если нужен фон — можно вернуть */
+  box-shadow: none;          /* убираем тень в свернутом виде */
+  overflow: visible;
 }
 
-/* Свернутое состояние (квадрат 48x48) */
-.fbtn.collapsed {
-  width:48px;
-  height:48px;
-  padding:0;
-  border-radius:12px;
-  gap:0;
-  justify-content:center;
-  font-size:0;
+/* Если для Telegram нужен белый фон в свернутом виде — можно включить:
+.floating-panel #btn-tg.collapsed { background:#fff; border-radius:10px; }
+*/
+
+/* Развёрнутое состояние остаётся компактным и как было */
+.floating-panel .fbtn.expanded {
+  height: 40px;              /* та же высота, чтобы не прыгала */
+  padding: 6px 12px;         /* компактный padding для текста */
+  border-radius: 12px;
+  gap: 10px;
+  justify-content: flex-start;
+  font-size: 15px;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  background: linear-gradient(135deg,#00D4FF,#7B68EE,#8B00FF); /* или оставить индивидуальные правила */
 }
 
-/* Логотип внутри (32x32 в collapsed, 40px в expanded) */
-.fbtn .logo-img {
-  width:32px;
-  height:32px;
-  display:block;
-  object-fit:contain;
-}
-.fbtn .ftext { display:none; }
+/* Текст видим только в expanded */
+.floating-panel .fbtn .ftext { display: none; }
+.floating-panel .fbtn.expanded .ftext { display: inline-block; color: #fff; }
 
-/* Expanded состояние */
-.fbtn.expanded {
-  width:auto;
-  padding:14px 28px;
-  border-radius:14px;
-  gap:10px;
-  justify-content:flex-start;
-  font-size:16px;
-}
-.fbtn.expanded .logo-img { width:auto; height:40px; }
-.fbtn.expanded .ftext { display:inline-block; color:white; }
+/* Если хочешь, чтобы в collapsed был небольшой контур вокруг иконки, включи это:
+.floating-panel .fbtn.collapsed { border:1px solid rgba(0,0,0,0.06); background-clip:padding-box; }
+*/
 
-/* Telegram: collapsed — белый фон; expanded — синий градиент */
-#btn-tg.collapsed { background:white !important; box-shadow:0 6px 18px rgba(0,0,0,0.12); }
-#btn-tg.expanded { background:linear-gradient(135deg, #2AABEE, #229ED9); color:white; }
-
-/* MAX: оставляем градиент */
-#btn-max.collapsed { background:linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF); box-shadow:0 6px 18px rgba(0,0,0,0.12); }
-#btn-max.expanded { background:linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF); }
-
-/* Адаптив */
+/* Мобильная корректировка: чуть больше области касания */
 @media (max-width:600px){
-  #floating-buttons { right:12px; bottom:12px; }
-  .fbtn { padding:12px 16px; border-radius:12px; font-size:15px; }
-  .fbtn.collapsed { width:44px; height:44px; border-radius:10px; }
+  .floating-panel .fbtn.collapsed { width:44px; height:44px; padding:6px; border-radius:12px; }
+  .floating-panel .fbtn.expanded { height:44px; padding:8px 12px; font-size:15px; }
+  .floating-panel .fbtn .logo-img { width:32px; height:32px; }
 }
