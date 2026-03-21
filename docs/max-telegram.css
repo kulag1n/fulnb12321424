@@ -1,79 +1,162 @@
-/* --- Размеры иконок и контейнеров --- */
-/* Десктоп: чуть меньше значки, компактный контейнер */
-.floating-panel .fbtn .logo-img {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-  display: block;
+/* ---------------------------
+   MAX: стиль, аналогичный Telegram
+   --------------------------- */
+
+/* Контейнер (позиционирование правый-низ) */
+#max-floating {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 99999;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  pointer-events: none; /* контейнер не перехватывает клики */
 }
 
-/* collapsed на десктопе — контейнер под иконку */
-.floating-panel .fbtn.collapsed {
-  width: 72px;
-  height: 72px;
-  padding: 18px 0;
+/* Ссылка-кнопка кликабельна */
+#max-floating a {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF);
+  color: white;
   border-radius: 14px;
-  gap: 0;
-  justify-content: center;
-  font-size: 0;
-  background: transparent;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(123,104,238,0.3);
+  transition: all 0.18s ease;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
-/* expanded на десктопе — высота совпадает с collapsed */
-.floating-panel .fbtn.expanded {
-  height: 72px;
-  padding: 12px 18px;
-  border-radius: 14px;
-  gap: 12px;
-  justify-content: flex-start;
-  font-size: 16px;
-  z-index: 50;
+/* Логотип внутри (по умолчанию для desktop — чуть больше) */
+#max-floating a .max-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
 }
 
-/* текст видим только в expanded */
-.floating-panel .fbtn .ftext { display: none; }
-.floating-panel .fbtn.expanded .ftext { display: inline-block; color: #fff; }
+/* SVG-иконка резерв (скрыта, если используем .max-logo) */
+#max-floating a .max-svg-icon { display: none; }
 
-/* --- Мобильная версия: вертикально, кнопки одна над другой (перекрытие) --- */
+/* Текст по умолчанию скрыт (показываем только в expanded) */
+#max-floating a .max-text { display: none; }
+
+/* ---------------------------
+   Свернутое состояние: показываем только логотип
+   (по умолчанию добавляй #max-floating.collapsed)
+   --------------------------- */
+#max-floating.collapsed a {
+  width: 56px;               /* контейнер под логотип */
+  height: 56px;
+  padding: 8px;              /* запас для касания */
+  border-radius: 12px;
+  gap: 0;
+  justify-content: center;
+  font-size: 0;
+  background: transparent;   /* если нужен фон — можно вернуть градиент */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  color: transparent;
+}
+
+/* В collapsed показываем только логотип 32x32 (внутри увеличенного контейнера) */
+#max-floating.collapsed a .max-logo {
+  width: 32px;
+  height: 32px;
+  display: block;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+/* Скрываем текст и svg в collapsed */
+#max-floating.collapsed a .max-text { display: none; color: transparent; font-size: 0; }
+#max-floating.collapsed a .max-svg-icon { display: none; }
+
+/* ---------------------------
+   Развёрнутое состояние: логотип + текст (как у Telegram)
+   (добавляй #max-floating.expanded)
+   --------------------------- */
+#max-floating.expanded a {
+  width: auto;
+  padding: 12px 18px;
+  border-radius: 14px;
+  gap: 10px;
+  justify-content: flex-start;
+  background: linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF);
+  color: white;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* В expanded логотип чуть больше по высоте */
+#max-floating.expanded a .max-logo {
+  width: auto;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Текст видим в expanded */
+#max-floating.expanded a .max-text {
+  display: inline-block;
+  font-size: 16px;
+  color: white;
+  line-height: 1;
+}
+
+/* ---------------------------
+   Плавный переход
+   --------------------------- */
+#max-floating a {
+  transition: width .18s ease, padding .18s ease, border-radius .18s ease, gap .18s ease, background .18s ease, color .12s ease, box-shadow .18s ease;
+}
+
+/* ---------------------------
+   Мобильная оптимизация
+   - На мобилке: контейнеры вертикальные (строго column),
+     если у тебя несколько кнопок в .floating-panel — они будут одна над другой.
+   - MAX: компактнее, но удобная область касания.
+   --------------------------- */
 @media (max-width: 600px) {
-  .floating-panel {
+  /* Если у тебя есть общий контейнер .floating-panel, принудительно ставим column */
+  .floating-panel, #max-floating {
     right: 12px;
     bottom: 12px;
+    display: flex;
     flex-direction: column; /* строго вертикально на мобилке */
+    gap: 0;
     align-items: flex-end;
     pointer-events: none;
   }
 
-  /* логотип поменьше на мобилке */
-  .floating-panel .fbtn .logo-img {
-    width: 30px;
-    height: 30px;
+  /* Уменьшаем логотип для мобильных */
+  #max-floating a .max-logo {
+    width: 32px;
+    height: 32px;
   }
 
   /* collapsed на мобилке — компактная область касания */
-  .floating-panel .fbtn.collapsed {
-    width: 56px;
-    height: 56px;
+  #max-floating.collapsed a {
+    width: 52px;
+    height: 52px;
     padding: 8px;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   }
 
-  .floating-panel .fbtn.expanded {
-    height: 56px;
+  /* expanded на мобилке — высота совпадает с collapsed, текст видим */
+  #max-floating.expanded a {
+    height: 52px;
     padding: 8px 12px;
     font-size: 15px;
   }
 
-  /* вертикальное перекрытие: каждая следующая кнопка поднимается вверх */
-  .floating-panel .fbtn + .fbtn {
-    margin-top: -16px; /* регулируй перекрытие: 12–20px */
+  /* Если у тебя несколько кнопок в .floating-panel — вертикальное перекрытие */
+  .floating-panel .fbtn + .fbtn,
+  #max-floating + .fbtn {
+    margin-top: -14px; /* регулируй перекрытие: 12–18px */
   }
-
-  /* порядок слоёв: последняя в DOM будет сверху */
-  .floating-panel .fbtn:nth-child(1) { z-index: 10; }
-  .floating-panel .fbtn:nth-child(2) { z-index: 11; }
-  .floating-panel .fbtn.expanded { z-index: 60; transform: translateY(-6px); }
 }
