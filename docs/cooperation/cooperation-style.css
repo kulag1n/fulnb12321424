@@ -968,4 +968,42 @@ button:hover,
     padding: 1.5em;
   }
 }
+/* === ФИКС ВЫРАВНИВАНИЯ НА МОБИЛЬНЫХ === */
+@media (max-width: 600px) {
+
+  body {
+    padding: 1.2em 1em; /* меньше боковых отступов, визуально по центру */
+  }
+
+  .coop-wrapper {
+    padding: 2.5em 1em;
+  }
+
+  .coop-hero,
+  .coop-features,
+  .coop-cta-final {
+    text-align: center;
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .feature-list li {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .popup-form {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .modal-content {
+    margin: 0 auto;
+    width: 92%;
+  }
+}
 
