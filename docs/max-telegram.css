@@ -1,162 +1,138 @@
-/* ---------------------------
-   MAX: стиль, аналогичный Telegram
-   --------------------------- */
+/* ====== СБРОС И ГАРАНТИЯ: MAX и TELEGRAM ====== */
 
-/* Контейнер (позиционирование правый-низ) */
-#max-floating {
+/* Общий контейнер — приоритетные правила */
+.floating-panel, #floating-buttons, #max-floating {
   position: fixed;
   right: 18px;
   bottom: 18px;
   z-index: 99999;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  pointer-events: none; /* контейнер не перехватывает клики */
-}
-
-/* Ссылка-кнопка кликабельна */
-#max-floating a {
-  pointer-events: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
-  background: linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF);
-  color: white;
-  border-radius: 14px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  box-shadow: 0 4px 15px rgba(123,104,238,0.3);
-  transition: all 0.18s ease;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-end;
+  pointer-events: none;
   box-sizing: border-box;
 }
 
-/* Логотип внутри (по умолчанию для desktop — чуть больше) */
-#max-floating a .max-logo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  display: block;
-  border-radius: 8px;
-}
-
-/* SVG-иконка резерв (скрыта, если используем .max-logo) */
-#max-floating a .max-svg-icon { display: none; }
-
-/* Текст по умолчанию скрыт (показываем только в expanded) */
-#max-floating a .max-text { display: none; }
-
-/* ---------------------------
-   Свернутое состояние: показываем только логотип
-   (по умолчанию добавляй #max-floating.collapsed)
-   --------------------------- */
-#max-floating.collapsed a {
-  width: 56px;               /* контейнер под логотип */
-  height: 56px;
-  padding: 8px;              /* запас для касания */
-  border-radius: 12px;
-  gap: 0;
-  justify-content: center;
-  font-size: 0;
-  background: transparent;   /* если нужен фон — можно вернуть градиент */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  color: transparent;
-}
-
-/* В collapsed показываем только логотип 32x32 (внутри увеличенного контейнера) */
-#max-floating.collapsed a .max-logo {
-  width: 32px;
-  height: 32px;
-  display: block;
-  object-fit: contain;
-  border-radius: 6px;
-}
-
-/* Скрываем текст и svg в collapsed */
-#max-floating.collapsed a .max-text { display: none; color: transparent; font-size: 0; }
-#max-floating.collapsed a .max-svg-icon { display: none; }
-
-/* ---------------------------
-   Развёрнутое состояние: логотип + текст (как у Telegram)
-   (добавляй #max-floating.expanded)
-   --------------------------- */
-#max-floating.expanded a {
-  width: auto;
-  padding: 12px 18px;
-  border-radius: 14px;
+/* Кнопки кликабельны */
+.floating-panel .fbtn, #floating-buttons .fbtn, #max-floating a {
+  pointer-events: auto;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
   gap: 10px;
-  justify-content: flex-start;
-  background: linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF);
-  color: white;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  text-decoration: none;
+  transition: all .18s ease;
+  overflow: hidden;
 }
 
-/* В expanded логотип чуть больше по высоте */
-#max-floating.expanded a .max-logo {
-  width: auto;
-  height: 40px;
+/* Логотипы — базовый размер (не меняем) */
+.floating-panel .logo-img, #floating-buttons .logo-img, #max-floating .max-logo {
+  width: 32px !important;
+  height: 32px !important;
   object-fit: contain;
-  border-radius: 8px;
+  display: block;
 }
 
-/* Текст видим в expanded */
+/* ====== Свернутое состояние (первое положение) ======
+   Показываем только логотип, контейнер компактный и кликабельный.
+   Эти правила имеют высокую специфичность, чтобы не перекрывались. */
+.floating-panel .fbtn.collapsed,
+#floating-buttons .fbtn.collapsed,
+#max-floating.collapsed a {
+  width: 56px !important;        /* общий размер кнопки */
+  height: 56px !important;
+  padding: 8px !important;
+  border-radius: 12px !important;
+  gap: 0 !important;
+  justify-content: center !important;
+  font-size: 0 !important;
+  background: transparent !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08) !important;
+  color: transparent !important;
+  border: none !important;
+}
+
+/* В свернутом состоянии показываем только логотип 32x32 */
+.floating-panel .fbtn.collapsed .logo-img,
+#floating-buttons .fbtn.collapsed .logo-img,
+#max-floating.collapsed a .max-logo {
+  width: 32px !important;
+  height: 32px !important;
+  display: block !important;
+}
+
+/* Скрываем текст и резервные svg в collapsed */
+.floating-panel .fbtn.collapsed .ftext,
+#floating-buttons .fbtn.collapsed .ftext,
+#max-floating.collapsed a .max-text,
+#max-floating.collapsed a .max-svg-icon {
+  display: none !important;
+  visibility: hidden !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+/* ====== Развёрнутое состояние (второе положение) ====== */
+.floating-panel .fbtn.expanded,
+#floating-buttons .fbtn.expanded,
+#max-floating.expanded a {
+  width: auto !important;
+  height: 56px !important;
+  padding: 8px 14px !important;
+  border-radius: 14px !important;
+  gap: 10px !important;
+  justify-content: flex-start !important;
+  font-size: 15px !important;
+  color: #fff !important;
+  background: linear-gradient(135deg,#00D4FF,#7B68EE,#8B00FF) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+}
+
+/* В expanded показываем текст и увеличенный логотип */
+.floating-panel .fbtn.expanded .ftext,
+#floating-buttons .fbtn.expanded .ftext,
 #max-floating.expanded a .max-text {
-  display: inline-block;
-  font-size: 16px;
-  color: white;
-  line-height: 1;
+  display: inline-block !important;
+  visibility: visible !important;
+  color: #fff !important;
+  font-size: 16px !important;
+}
+.floating-panel .fbtn.expanded .logo-img,
+#floating-buttons .fbtn.expanded .logo-img,
+#max-floating.expanded a .max-logo {
+  height: 40px !important;
+  width: auto !important;
 }
 
-/* ---------------------------
-   Плавный переход
-   --------------------------- */
-#max-floating a {
-  transition: width .18s ease, padding .18s ease, border-radius .18s ease, gap .18s ease, background .18s ease, color .12s ease, box-shadow .18s ease;
-}
-
-/* ---------------------------
-   Мобильная оптимизация
-   - На мобилке: контейнеры вертикальные (строго column),
-     если у тебя несколько кнопок в .floating-panel — они будут одна над другой.
-   - MAX: компактнее, но удобная область касания.
-   --------------------------- */
+/* ====== Мобильная корректировка: вертикально, кнопки одна над другой ====== */
 @media (max-width: 600px) {
-  /* Если у тебя есть общий контейнер .floating-panel, принудительно ставим column */
-  .floating-panel, #max-floating {
+  .floating-panel, #floating-buttons, #max-floating {
     right: 12px;
     bottom: 12px;
-    display: flex;
-    flex-direction: column; /* строго вертикально на мобилке */
-    gap: 0;
+    flex-direction: column !important; /* строго вертикально */
     align-items: flex-end;
-    pointer-events: none;
   }
 
-  /* Уменьшаем логотип для мобильных */
-  #max-floating a .max-logo {
-    width: 32px;
-    height: 32px;
-  }
-
-  /* collapsed на мобилке — компактная область касания */
-  #max-floating.collapsed a {
-    width: 52px;
-    height: 52px;
-    padding: 8px;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  }
-
-  /* expanded на мобилке — высота совпадает с collapsed, текст видим */
-  #max-floating.expanded a {
-    height: 52px;
-    padding: 8px 12px;
-    font-size: 15px;
-  }
-
-  /* Если у тебя несколько кнопок в .floating-panel — вертикальное перекрытие */
   .floating-panel .fbtn + .fbtn,
+  #floating-buttons .fbtn + .fbtn,
   #max-floating + .fbtn {
-    margin-top: -14px; /* регулируй перекрытие: 12–18px */
+    margin-top: -14px !important; /* вертикальное перекрытие */
+  }
+
+  .floating-panel .fbtn.collapsed,
+  #floating-buttons .fbtn.collapsed,
+  #max-floating.collapsed a {
+    width: 52px !important;
+    height: 52px !important;
+    padding: 8px !important;
+    border-radius: 12px !important;
+  }
+
+  .floating-panel .logo-img,
+  #floating-buttons .logo-img,
+  #max-floating .max-logo {
+    width: 30px !important;
+    height: 30px !important;
   }
 }
