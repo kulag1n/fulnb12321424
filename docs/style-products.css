@@ -1,75 +1,54 @@
-body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background-color: #ffffff;
-  color: #333;
+/* --- Иконки 32x32 и единая рамка для collapsed состояния --- */
+
+/* Жёстко фиксируем размер иконок */
+.fbtn .logo-img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  object-fit: contain;
 }
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 10px 40px;
-  background: #eedd7c;
+
+/* Рамка вокруг свернутой кнопки: тонкая, светлая, с внутренним отступом,
+   чтобы иконка не прилегала вплотную к границе */
+.fbtn.collapsed {
+  width: 48px;
+  height: 48px;
+  padding: 6px;                 /* отступ внутри рамки, чтобы иконка 32x32 помещалась */
+  border-radius: 12px;
+  gap: 0;
   justify-content: center;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+  font-size: 0;
+  box-sizing: border-box;      /* padding учитывается внутри размера */
+  border: 2px solid rgba(0,0,0,0.06); /* единая нейтральная рамка */
+  background-clip: padding-box; /* чтобы градиент/фон не залезал под рамку */
 }
 
-nav li {
-  position: relative;
+/* Если нужно чуть более заметная рамка для светлого фона Telegram collapsed */
+#btn-tg.collapsed {
+  background: white !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border: 2px solid rgba(0,0,0,0.08);
 }
 
-nav a {
-  text-decoration: none;
-  color: #333;
-  padding: 10px;
-  display: block;
-  font-weight: 500;
-  transition: background 0.3s;
+/* Для MAX collapsed — рамка того же стиля, но можно оставить градиент внутри */
+#btn-max.collapsed {
+  background: linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border: 2px solid rgba(255,255,255,0.08); /* светлая рамка поверх градиента */
 }
 
-nav li:hover > a {
-  background: #f3ef01;
-  box-shadow: 0 0 10px rgba(112, 112, 111, 0.6);
-  border-radius: 15px;
+/* В expanded состоянии рамку скрываем (или делаем тоньше) */
+.fbtn.expanded {
+  border: none;
+  padding: 14px 28px;
 }
 
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  padding: 10px 0;
-  display: none;
-  min-width: 240px;
-  z-index: 10;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.dropdown-menu li {
-  padding: 8px 20px;
-}
-
-.dropdown-menu a {
-  color: #333;
-  font-size: 14px;
-  padding: 5px 0;
-}
-
-.dropdown-menu a:hover {
-  background: #f0f0f0;
+/* Адаптив: уменьшаем отступы, сохраняя рамку */
+@media (max-width:600px){
+  .fbtn.collapsed {
+    width: 44px;
+    height: 44px;
+    padding: 5px;
+    border-radius: 10px;
+  }
 }
