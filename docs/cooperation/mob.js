@@ -48,10 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
   if (openBtn && modal) {
     openBtn.addEventListener('click', function(e) {
       e.preventDefault();
-      if (modal.style.display === 'flex') {
-        modal.style.display = 'none'; // закрыть
+
+      const isVisible = window.getComputedStyle(modal).display !== 'none';
+
+      if (isVisible) {
+        modal.style.display = 'none';   // закрыть
       } else {
-        modal.style.display = 'flex'; // открыть
+        modal.style.display = 'flex';   // открыть
       }
     });
   }
