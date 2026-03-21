@@ -1,103 +1,108 @@
-/* Панель: вертикально по умолчанию (десктоп) */
+/* --- Панель и общие настройки --- */
 .floating-panel {
   position: fixed;
   right: 18px;
   bottom: 18px;
   z-index: 99999;
   display: flex;
-  flex-direction: column;   /* вертикально на десктопе */
-  gap: 0;                   /* перекрытие задаём через отрицательные margin */
+  flex-direction: column; /* вертикально по умолчанию */
+  gap: 0;
   align-items: flex-end;
   pointer-events: none;
 }
 
-/* Кнопки кликабельны */
 .floating-panel .fbtn {
   pointer-events: auto;
-  position: relative;
-  margin-top: 0;
-  transition: transform .18s ease, box-shadow .18s ease;
   box-sizing: border-box;
-}
-
-/* Вертикальное перекрытие (каждая следующая чуть выше предыдущей) */
-.floating-panel .fbtn + .fbtn {
-  margin-top: -12px; /* регулируй степень перекрытия (8–16px) */
-}
-
-/* Свернутое состояние — иконка видна, контейнер под неё */
-.floating-panel .fbtn.collapsed {
-  width: 56px;
-  height: 56px;
-  padding: 12px;
-  border-radius: 14px;
-  gap: 0;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  font-size: 0;
-  border: none;
-  background: transparent;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
+  position: relative;
 }
 
-/* Логотип 32x32 */
+/* --- Десктоп: увеличенные иконки и контейнеры --- */
+/* логотип чуть больше */
 .floating-panel .fbtn .logo-img {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
   display: block;
 }
 
-/* Expanded — компактная высота, текст справа */
-.floating-panel .fbtn.expanded {
-  height: 56px;
-  padding: 12px 18px;
-  border-radius: 14px;
-  gap: 10px;
-  justify-content: flex-start;
-  font-size: 15px;
-  z-index: 50; /* развёрнутая кнопка поверх остальных */
+/* collapsed — видна только иконка в увеличенном контейнере */
+.floating-panel .fbtn.collapsed {
+  width: 80px;            /* увеличенная рамка вокруг иконки */
+  height: 80px;
+  padding: 20px 0;        /* вертикальный запас для визуала */
+  border-radius: 16px;
+  gap: 0;
+  font-size: 0;
+  background: transparent;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  justify-content: center;
 }
 
-/* Текст видим только в expanded */
+/* expanded — текст рядом, высота совпадает с collapsed */
+.floating-panel .fbtn.expanded {
+  height: 80px;
+  padding: 12px 20px;
+  border-radius: 16px;
+  gap: 12px;
+  justify-content: flex-start;
+  font-size: 16px;
+  z-index: 50;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+
+/* текст видим только в expanded */
 .floating-panel .fbtn .ftext { display: none; }
 .floating-panel .fbtn.expanded .ftext { display: inline-block; color: #fff; }
 
-/* Порядок слоёв: последняя в DOM выше */
-.floating-panel .fbtn:nth-child(1) { z-index: 10; }
-.floating-panel .fbtn:nth-child(2) { z-index: 11; }
-.floating-panel .fbtn:nth-child(3) { z-index: 12; }
+/* цвета для конкретных кнопок (оставь свои градиенты/фоны) */
+.floating-panel #btn-tg.collapsed { background: #fff !important; }
+.floating-panel #btn-tg.expanded { background: linear-gradient(135deg,#2AABEE,#229ED9); color:#fff; }
+.floating-panel #btn-max.collapsed { background: linear-gradient(135deg,#00D4FF,#7B68EE,#8B00FF); }
+.floating-panel #btn-max.expanded { background: linear-gradient(135deg,#00D4FF,#7B68EE,#8B00FF); color:#fff; }
 
-/* --- Мобильная версия: горизонтально --- */
+/* --- Мобильная версия: вертикальное наложение (иконки одна над другой) --- */
 @media (max-width: 600px) {
   .floating-panel {
     right: 12px;
     bottom: 12px;
-    flex-direction: row-reverse; /* горизонтально, иконки справа налево */
-    align-items: center;
+    flex-direction: column; /* вертикально на мобилке */
+    align-items: flex-end;
   }
 
-  /* Горизонтальное перекрытие: сдвигаем влево */
-  .floating-panel .fbtn + .fbtn {
-    margin-top: 0;
-    margin-left: -12px; /* регулируй перекрытие по горизонтали */
+  /* логотип поменьше на мобилке */
+  .floating-panel .fbtn .logo-img {
+    width: 32px;
+    height: 32px;
   }
 
-  /* Увеличенная область касания на мобилке */
+  /* collapsed на мобилке — компактнее, но с запасом для касания */
   .floating-panel .fbtn.collapsed {
-    width: 64px;
-    height: 64px;
-    padding: 14px;
-    border-radius: 16px;
+    width: 56px;
+    height: 56px;
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   }
 
   .floating-panel .fbtn.expanded {
-    height: 64px;
-    padding: 14px 16px;
+    height: 56px;
+    padding: 8px 12px;
     font-size: 15px;
   }
 
-  .floating-panel .fbtn .logo-img {
-    width: 34px;
-    height: 34px;
+  /* вертикальное перекрытие: каждая следующая кнопка поднимается вверх */
+  .floating-panel .fbtn + .fbtn {
+    margin-top: -18px; /* регулируй степень перекрытия (12–22px) */
   }
+
+  /* порядок слоёв: последняя в DOM будет сверху */
+  .floating-panel .fbtn:nth-child(1) { z-index: 10; }
+  .floating-panel .fbtn:nth-child(2) { z-index: 11; }
+  .floating-panel .fbtn.expanded { z-index: 60; transform: translateY(-6px); }
 }
