@@ -1,3 +1,4 @@
+<script>
 document.addEventListener('DOMContentLoaded', function() {
   const toggleBtn = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -38,4 +39,36 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.dropdown.open').forEach(li => li.classList.remove('open'));
     }
   });
+
+  // === МОДАЛЬНОЕ ОКНО "Форма партнёрства" ===
+  const openBtn = document.getElementById('openModal');
+  const modal = document.getElementById('modalForm');
+  const closeBtn = document.getElementById('closeModal');
+
+  if (openBtn && modal) {
+    openBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (modal.style.display === 'flex') {
+        modal.style.display = 'none'; // закрыть
+      } else {
+        modal.style.display = 'flex'; // открыть
+      }
+    });
+  }
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+  }
+
+  // Закрытие по клику вне формы
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  }
 });
+</script>
