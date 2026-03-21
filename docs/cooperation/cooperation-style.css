@@ -877,3 +877,95 @@ button:hover,
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+/* === ВЫРАВНИВАНИЕ ОСНОВНОГО БЛОКА === */
+.coop-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4em 1.5em;
+}
+
+/* === ЦЕНТРОВКА БЛОКА С ЗАГОЛОВКОМ === */
+.coop-hero {
+  text-align: center;
+}
+
+/* === КНОПКА "СТАТЬ ПАРТНЁРОМ" — ЦЕНТР === */
+.btn-primary {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* === ЦЕНТРОВКА БЛОКА "ПОЧЕМУ ВЫБИРАЮТ НАС" === */
+.coop-features {
+  text-align: center;
+}
+
+/* === ЦЕНТРОВКА КНОПКИ "СВЯЗАТЬСЯ С СМОЛМАФ" === */
+.coop-cta-final {
+  text-align: center;
+}
+
+.btn-outline {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* === МОДАЛЬНОЕ ОКНО — СТРОГО ПО ЦЕНТРУ === */
+.modal-overlay {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  margin: 0 auto;
+}
+
+/* === АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ === */
+@media (max-width: 600px) {
+
+  .coop-wrapper {
+    padding: 2.5em 1em;
+  }
+
+  .coop-hero h1 {
+    font-size: 2rem;
+  }
+
+  .coop-hero p {
+    font-size: 1.1rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+    max-width: 320px;
+    font-size: 1.1rem;
+    padding: 0.9em 1.2em;
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr;
+    gap: 1.2em;
+  }
+
+  .feature-list li {
+    padding: 1.4em;
+  }
+
+  .coop-cta-final p {
+    font-size: 1.15rem;
+  }
+
+  .btn-outline {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.8em 1.2em;
+    font-size: 1rem;
+  }
+
+  .modal-content {
+    width: 92%;
+    padding: 1.5em;
+  }
+}
+
