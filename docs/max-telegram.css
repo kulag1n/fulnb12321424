@@ -1,0 +1,76 @@
+/* assets/css/max-telegram.css */
+#floating-buttons {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 99999;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:flex-end;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Общий стиль кнопок */
+.fbtn {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 28px;
+  background:linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF);
+  color:white;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:16px;
+  box-shadow:0 4px 15px rgba(123,104,238,0.3);
+  transition:all 0.18s ease;
+  overflow:hidden;
+}
+
+/* Свернутое состояние (квадрат 48x48) */
+.fbtn.collapsed {
+  width:48px;
+  height:48px;
+  padding:0;
+  border-radius:12px;
+  gap:0;
+  justify-content:center;
+  font-size:0;
+}
+
+/* Логотип внутри (32x32 в collapsed, 40px в expanded) */
+.fbtn .logo-img {
+  width:32px;
+  height:32px;
+  display:block;
+  object-fit:contain;
+}
+.fbtn .ftext { display:none; }
+
+/* Expanded состояние */
+.fbtn.expanded {
+  width:auto;
+  padding:14px 28px;
+  border-radius:14px;
+  gap:10px;
+  justify-content:flex-start;
+  font-size:16px;
+}
+.fbtn.expanded .logo-img { width:auto; height:40px; }
+.fbtn.expanded .ftext { display:inline-block; color:white; }
+
+/* Telegram: collapsed — белый фон; expanded — синий градиент */
+#btn-tg.collapsed { background:white !important; box-shadow:0 6px 18px rgba(0,0,0,0.12); }
+#btn-tg.expanded { background:linear-gradient(135deg, #2AABEE, #229ED9); color:white; }
+
+/* MAX: оставляем градиент */
+#btn-max.collapsed { background:linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF); box-shadow:0 6px 18px rgba(0,0,0,0.12); }
+#btn-max.expanded { background:linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF); }
+
+/* Адаптив */
+@media (max-width:600px){
+  #floating-buttons { right:12px; bottom:12px; }
+  .fbtn { padding:12px 16px; border-radius:12px; font-size:15px; }
+  .fbtn.collapsed { width:44px; height:44px; border-radius:10px; }
+}
