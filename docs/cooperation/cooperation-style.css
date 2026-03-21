@@ -751,3 +751,129 @@ button:hover,
   }
 }
 
+/* === ОФОРМЛЕНИЕ БЛОКА СОТРУДНИЧЕСТВА И ПРЕИМУЩЕСТВ === */
+
+/* Заголовок "Сотрудничество с СмолМАФ" */
+.coop-hero h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #e6a700;
+  text-align: center;
+  margin-bottom: 0.4em;
+  line-height: 1.2;
+  animation: fadeInUp 0.6s ease;
+}
+
+/* Текст под заголовком */
+.coop-hero p {
+  font-size: 1.35rem;
+  color: #4b3400;
+  max-width: 800px;
+  margin: 0 auto 2em auto;
+  text-align: center;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease;
+}
+
+/* Кнопка "Стать партнёром" */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffe082, #ffb300);
+  padding: 1em 2.2em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 14px;
+  color: #4b3400;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(255, 193, 77, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 1s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.06);
+  background: linear-gradient(90deg, #ffd54f, #ffa500);
+  box-shadow: 0 0 18px rgba(255, 193, 77, 0.6);
+  color: #fff;
+}
+
+/* Заголовок "Почему выбирают нас" */
+.coop-features h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 1.4em;
+  color: #d48900;
+  font-weight: 800;
+}
+
+/* Список преимуществ */
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2em;
+  list-style: none;
+  padding: 0;
+}
+
+.feature-list li {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.8em;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+
+.feature-list li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(255, 193, 77, 0.35);
+}
+
+/* Заголовки преимуществ */
+.feature-list h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.4em;
+  color: #e6a700;
+  font-weight: 700;
+}
+
+/* Текст преимуществ */
+.feature-list p {
+  font-size: 1rem;
+  color: #4b3400;
+  line-height: 1.55;
+}
+
+/* Финальный текст "Идея, предложение..." */
+.coop-cta-final p {
+  font-size: 1.3rem;
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  color: #4b3400;
+}
+
+/* Кнопка "Связаться с СмолМАФ" */
+.btn-outline {
+  display: inline-block;
+  padding: 0.9em 1.8em;
+  border: 2px solid #e6a700;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  background-color: transparent;
+  color: #e6a700;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
+}
+
+.btn-outline:hover {
+  background-color: #e6a700;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Анимация появления вверх */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
