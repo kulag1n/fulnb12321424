@@ -1,54 +1,85 @@
-/* --- Иконки 32x32 и единая рамка для collapsed состояния --- */
-
-/* Жёстко фиксируем размер иконок */
-.fbtn .logo-img {
-  width: 32px;
-  height: 32px;
-  display: block;
-  object-fit: contain;
+/* --- Наложение кнопок друг на друга (частичное перекрытие) --- */
+.floating-panel {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* убираем стандартный gap, перекрытие задаём вручную */
+  align-items: flex-end;
+  pointer-events: none; /* контейнер не перехватывает клики */
 }
 
-/* Рамка вокруг свернутой кнопки: тонкая, светлая, с внутренним отступом,
-   чтобы иконка не прилегала вплотную к границе */
-.fbtn.collapsed {
-  width: 48px;
-  height: 48px;
-  padding: 6px;                 /* отступ внутри рамки, чтобы иконка 32x32 помещалась */
-  border-radius: 12px;
-  gap: 0;
-  justify-content: center;
-  font-size: 0;
-  box-sizing: border-box;      /* padding учитывается внутри размера */
-  border: 2px solid rgba(0,0,0,0.06); /* единая нейтральная рамка */
-  background-clip: padding-box; /* чтобы градиент/фон не залезал под рамку */
+/* Каждая кнопка кликабельна — включаем pointer-events для них */
+.floating-panel .fbtn {
+  pointer-events: auto;
+  position: relative;
+  margin-top: 0;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
 
-/* Если нужно чуть более заметная рамка для светлого фона Telegram collapsed */
-#btn-tg.collapsed {
-  background: white !important;
+/* Перекрытие: следующая кнопка поднимается вверх над предыдущей на overlap */
+.floating-panel .fbtn + .fbtn {
+  margin-top: -12px; /* степень перекрытия: подбери 8–16px по вкусу */
+}
+
+/* z-index: последняя в DOM будет сверху; при необходимости можно менять */
+.floating-panel .fbtn:nth-child(1) { z-index: 10; }
+.floating-panel .fbtn:nth-child(2) { z-index: 11; }
+.floating-panel .fbtn.expanded { z-index: 50; } /* развёрнутая кнопка всегда сверху */
+
+/* Hover / touch feedback */
+.floating-panel .fbtn:hover,
+.floating-panel .fbtn:active {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+}
+
+/* --- Подгонка рамки под иконку 32x32 (сохранить удобную область касания) --- */
+.floating-panel .fbtn .logo-img { width:32px; height:32px; object-fit:contain; display:block; }
+
+/* collapsed: рамка точно под иконку + padding + border */
+.floating-panel .fbtn.collapsed {
+  width:44px;               /* 32px иконка + 2*6px padding = 44 */
+  height:44px;
+  padding:6px;
+  border-radius:10px;
+  gap:0;
+  justify-content:center;
+  font-size:0;
+  border:2px solid rgba(0,0,0,0.06);
+  background-clip: padding-box;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  border: 2px solid rgba(0,0,0,0.08);
 }
 
-/* Для MAX collapsed — рамка того же стиля, но можно оставить градиент внутри */
-#btn-max.collapsed {
-  background: linear-gradient(135deg, #00D4FF, #7B68EE, #8B00FF);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  border: 2px solid rgba(255,255,255,0.08); /* светлая рамка поверх градиента */
+/* expanded: компактная высота, текст рядом с логотипом */
+.floating-panel .fbtn.expanded {
+  height:44px;
+  padding:6px 12px;
+  border-radius:12px;
+  gap:10px;
+  justify-content:flex-start;
+  font-size:15px;
+  border:none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-/* В expanded состоянии рамку скрываем (или делаем тоньше) */
-.fbtn.expanded {
-  border: none;
-  padding: 14px 28px;
-}
+/* Текст видим только в expanded */
+.floating-panel .fbtn .ftext { display:none; line-height:1; }
+.floating-panel .fbtn.expanded .ftext { display:inline-block; color:#fff; }
 
-/* Адаптив: уменьшаем отступы, сохраняя рамку */
+/* Цвета для Telegram / MAX (оставь свои) */
+.floating-panel #btn-tg.collapsed { background:#fff !important; border-color: rgba(0,0,0,0.08); }
+.floating-panel #btn-tg.expanded { background: linear-gradient(135deg,#2AABEE,#229ED9); color:#fff; }
+.floating-panel #btn-max.collapsed { background: linear-gradient(135deg,#00D4FF,#7B68EE,#8B00FF); border-color: rgba(255,255,255,0.08); }
+.floating-panel #btn-max.expanded { background: linear-gradient(135deg,#00D4FF,#7B68EE,#8B00FF); color:#fff; }
+
+/* --- Мобильная оптимизация --- */
 @media (max-width:600px){
-  .fbtn.collapsed {
-    width: 44px;
-    height: 44px;
-    padding: 5px;
-    border-radius: 10px;
-  }
+  .floating-panel { right:12px; bottom:12px; }
+  .floating-panel .fbtn.collapsed { width:48px; height:48px; padding:8px; border-radius:12px; }
+  .floating-panel .fbtn.expanded { height:48px; padding:8px 12px; font-size:15px; }
+  .floating-panel .fbtn .logo-img { width:34px; height:34px; }
+  .floating-panel .fbtn + .fbtn { margin-top: -10px; } /* чуть меньше перекрытие на мобилке */
 }
