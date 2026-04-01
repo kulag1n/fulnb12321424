@@ -9,8 +9,11 @@ jobs:
   send:
     runs-on: ubuntu-latest
     steps:
-      - name: Send message to MAX
+      - name: Send message to MAX (wire format)
         run: |
-          curl -s -X POST "https://botapi.max.ru/messages?access_token=${{ secrets.MAX_TOKEN }}" \
+          CID=$(date +%s%3N)
+          curl -s -X POST "https://platform-api.max.ru/messages" \
+            -H "Authorization: ${{ secrets.MAX_TOKEN }}" \
             -H "Content-Type: application/json" \
-            -d "{\"chat_id\": ${{ secrets.MAX_CHAT_ID }}, \"text\": \"Автосообщение от GitHub Actions\"}"
+            -d "{\"chatId\": ${{ secrets.MAX_CHAT_ID }}, \"message\": {\"cid\": ${CID}, \"text\": \"Автосообщение от GitHub Actions\"}}"
+
