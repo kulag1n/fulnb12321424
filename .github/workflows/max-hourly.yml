@@ -1,17 +1,15 @@
 name: MAX Hourly Sender
 
 on:
-  schedule:
-    - cron: "0 * * * *"
   workflow_dispatch:
 
 jobs:
   send:
     runs-on: ubuntu-latest
     steps:
-      - name: Send message to MAX (simple chatId + text)
+      - name: Send message to MAX
         run: |
           curl -s -X POST "https://platform-api.max.ru/messages" \
             -H "Authorization: ${{ secrets.MAX_TOKEN }}" \
             -H "Content-Type: application/json" \
-            -d "{\"chatId\": ${{ secrets.MAX_CHAT_ID }}, \"text\": \"Автосообщение от GitHub Actions\"}"
+            -d "{\"chat_id\": ${{ secrets.MAX_CHAT_ID }}, \"text\": \"Автосообщение от GitHub Actions\"}"
